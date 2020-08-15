@@ -19,19 +19,18 @@
         * {
             outline: none !important;
         }
-
-        .ico-an{
-            animation: fan 2.5s infinite;
+        .ftan{
+           font-size: 80%; 
         }
-        .copyright{
-            font-size: 80% !important;
+        .ftan i{
+            animation: heart 2.5s infinite;
         }
-        @keyframes fan{
-            50%{
-                opacity:0;
-            }
+        @keyframes heart{
             0%,100%{
                 opacity:1;
+            }
+            50%{
+                opacity:0;
             }
         }
     </style>
@@ -47,9 +46,9 @@
         </div>
     </div>
 
-    <footer class="bg-white footer pb-3 d-flex justify-content-end">
+    <footer class="bg-white footer pb-3 d-flex justify-content-end ftan">
         <div class="col-12 my-auto">
-            <div class="text-center my-auto copyright text-primary"><span><i class="fa fa-heartbeat text-danger ico-an"></i> &nbsp;Void Century, 2020 </span></div>
+            <div class="text-center my-auto copyright text-secondary"><span><i class="fa fa-heartbeat text-danger"></i> Stay Safe and Keep Healthy </span></div>
         </div>
     </footer>
 </body>
