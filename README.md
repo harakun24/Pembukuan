@@ -1,4 +1,4 @@
-# CodeIgniter 4 Application Starter
+# Sistem Informasi Pembukuan
 
 ## What is CodeIgniter?
 

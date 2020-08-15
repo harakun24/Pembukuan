@@ -25,9 +25,5 @@
                 </div>
             </li>
         </ul>
-        <form class="col-md-8 col-sm-12 form-inline my-2 my-lg-0 d-flex" method="get" action="">
-            <input name="keyword" class="form-control mr-sm-2" type="search" placeholder="Tulis sesuatu.." aria-label="Search" value="<?= (isset($keyword))?$keyword:'' ?>">
-            <button class="btn btn-outline-light mx-0 px-4 my-sm-0" type="submit">Cari</button>
-        </form>
     </div>
 </nav>

@@ -19,6 +19,21 @@
         * {
             outline: none !important;
         }
+
+        .ico-an{
+            animation: fan 2.5s infinite;
+        }
+        .copyright{
+            font-size: 80% !important;
+        }
+        @keyframes fan{
+            50%{
+                opacity:0;
+            }
+            0%,100%{
+                opacity:1;
+            }
+        }
     </style>
 </head>
 
@@ -32,9 +47,9 @@
         </div>
     </div>
 
-    <footer class="bg-white footer py-3 d-flex justify-content-end">
-        <div class="col-lg-4 col-sm-12 my-auto">
-            <div class="text-center my-auto copyright"><span><i class="fa fa-heartbeat text-danger"></i> Demi-Handler, 2020 </span></div>
+    <footer class="bg-white footer pb-3 d-flex justify-content-end">
+        <div class="col-12 my-auto">
+            <div class="text-center my-auto copyright text-primary"><span><i class="fa fa-heartbeat text-danger ico-an"></i> &nbsp;Void Century, 2020 </span></div>
         </div>
     </footer>
 </body>
