@@ -31,7 +31,7 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->add('/', 'Baru::index');
+$routes->addRedirect('/', 'siswa');
 $routes->group('bio', function ($routes) {
 	$routes->add('/', 'Baru::index',['as' => 'bio']);
 	$routes->add('show', 'Baru::index');
@@ -46,6 +46,8 @@ $routes->group('siswa',function($routes){
 	$routes->add('tambah', 'Siswa::tambah',['as'=>'siswa_add']);
 	$routes->add('ubah/(:num)', 'Siswa::ubah/$1',['as'=>'siswa_edit']);
 	$routes->post('simpan', 'Siswa::simpan',['as'=>'siswa_save']);
+	$routes->patch('perbarui', 'Siswa::perbarui', ['as' => 'siswa_update']);
+	$routes->delete('hapus/(:num)', 'Siswa::hapus/$1',['as'=>'siswa_hapus']);
 	
 });
 

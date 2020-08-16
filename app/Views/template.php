@@ -25,6 +25,10 @@
         .ftan i{
             animation: heart 2.5s infinite;
         }
+        .swal-footer{
+            display:flex;
+            justify-content:center;
+        }
         @keyframes heart{
             0%,100%{
                 opacity:1;

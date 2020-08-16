@@ -9,20 +9,20 @@
             </ol>
         </nav>
     </div>
-    <div class="col-sm-12 col-md-10 d-flex align-items-center justify-content-center">
+    <div class="col-12 d-flex align-items-center justify-content-center">
         <div class="card col-12">
             <div class="card-body">
                 <div class="d-flex align-items-center flex-wrap">
-                    <div class="col-md-6 col-12 d-flex align-items-end">
+                    <div class="col-md-8 col-12 d-flex align-items-end">
 
                         <h1>Tabel siswa</h1>
-                        <a href="<?= route_to('siswa_add'); ?>" class="btn btn-primary my-2 mx-3 btn-sm"><i class="fa fa-plus"></i> Tambah </a>
+                        <a href="<?= route_to('siswa_add'); ?>" class="btn btn-primary my-2 mx-3 btn-sm"><i class="fa fa-plus"></i><span class="d-none d-sm-inline"> Tambah</span> </a>
                     </div>
-                    <div class="col-md-6 col-12 p-2 d-flex justify-content-end">
+                    <div class="col-md-4 col-12 p-2">
 
-                        <form class="col-md-8 col-sm-12 form-inline my-2 my-lg-0 d-flex" method="get" action="" >
-                            <input name="keyword" class="form-control mr-sm-2" type="search" <?= $keyword!=''?'autofocus':''; ?> placeholder="Tulis sesuatu.." aria-label="Search" value="<?= (isset($keyword)) ? $keyword : '' ?>" onfocus="this.setSelectionRange(this.value.length,this.value.length);">
-                            <button id="searchbtn" class="btn btn-outline-primary mx-0 px-4 my-sm-0" type="submit">Cari</button>
+                        <form class="col-12 form-inline my-2 my-lg-0  d-flex justify-content-between" method="get" action="">
+                            <input name="keyword" class="form-control mr-2" type="search" <?= $keyword != '' ? 'autofocus' : ''; ?> placeholder="Tulis sesuatu.." aria-label="Search" value="<?= (isset($keyword)) ? $keyword : '' ?>" onfocus="this.setSelectionRange(this.value.length,this.value.length);">
+                            <button id="searchbtn" class="btn btn-outline-primary mx-0  px-4 my-sm-0" type="submit">Cari</button>
                         </form>
                     </div>
                 </div>
@@ -32,6 +32,7 @@
                             <th class="d-none d-md-table-cell">No</th>
                             <th class="d-none d-sm-table-cell">Nis</th>
                             <th>Nama</th>
+                            <th class="d-none d-lg-table-cell">Panggilan</th>
                             <th class="d-none d-lg-table-cell">Jenis kelamin</th>
                             <th class="d-none d-sm-table-cell">Kelas</th>
                             <th class="d-none d-md-table-cell">Prodi</th>
@@ -47,12 +48,18 @@
                                     <td class="d-none d-md-table-cell"><?= $i++; ?></td>
                                     <td class="d-none d-sm-table-cell"><?= $s['siswa_nis']; ?></td>
                                     <td><?= $s['siswa_nama']; ?></td>
+                                    <td class="d-none d-lg-table-cell"><?= $s['siswa_nick']; ?></td>
                                     <td class="d-none d-lg-table-cell"><?= $s['siswa_jk']; ?></td>
                                     <td class="d-none d-sm-table-cell"><?= $s['siswa_kelas']; ?></td>
                                     <td class="d-none d-md-table-cell"><?= $s['siswa_prodi']; ?></td>
                                     <td class="text-center">
                                         <a href="<?= route_to('siswa_edit', $s['siswa_nis']); ?>" class="btn btn-outline-success btn-sm mx-2"><span class="d-none d-md-inline">detail</span> <i class="fa fa-external-link-alt d-md-none d-inline"></i></a>
-                                        <button class="btn btn-danger btn-sm mx-2"><i class="fa fa-trash-alt"></i></button>
+                                        <form action="<?= route_to('siswa_hapus', $s['siswa_nis']); ?>" class="form d-inline" method="post">
+                                        <?= csrf_field(); ?>    
+                                        <input type="hidden" name="_method" value="delete"/>
+                                            <a class="btn btn-danger btn-sm mx-2" onclick="hapus('<?= $s['siswa_nis']; ?>')"><i class="fa fa-trash-alt"></i></a>
+                                            <button id="sub-<?=$s['siswa_nis'];?>" type="submit" class="d-none btn btn-danger btn-sm mx-2"><i class="fa fa-trash-alt"></i></button>
+                                        </form>
                                     </td>
                                 </tr>
                             <?php endforeach;
@@ -83,6 +90,7 @@
         swal({
             text: "Berhasil menambah <?= session()->getFlashData('data'); ?> ",
             icon: "success",
+
         });
     <?php elseif (session()->getFlashData('update')) : ?>
         swal({
@@ -109,8 +117,8 @@
             })
             .then((willDelete) => {
                 if (willDelete) {
-                    let bt = document.getElementById('bt-' + id);
-                    bt.click();
+                    var btn=document.getElementById('sub-'+id);
+                    btn.click();
                 } else {}
             });
     }

@@ -12,7 +12,7 @@ class Siswa extends BaseController
     public function index()
     {
         $keyword = $this->request->getVar('keyword');
-        $biodata = $keyword ? $this->siswa->search($keyword) : $this->siswa;
+        $biodata = $keyword ? $this->siswa->search($keyword)->orderBy('updated_at', 'DESC') : $this->siswa->orderBy('updated_at', 'DESC');
         $current = $this->request->getVar('page_table') ? $this->request->getVar('page_table') : 1;
         $data = [
             'siswa' => $biodata->paginate(5, 'table'),
@@ -36,18 +36,23 @@ class Siswa extends BaseController
 
         $data = [
             'val' => $val,
-            'siswa' => $this->siswa->find($nis)
+            'siswa' => $this->siswa->where('siswa_nis', $nis)->first()
         ];
         return view('siswa/edit_siswa', $data);
+    }
+    public function tes($id)
+    {
+        echo $this->siswa->where('siswa_nis', $id)->countAllResults();
     }
     public function simpan()
     {
         if (!$this->validate([
             'siswa_nis' => [
-                'rules' => 'is_unique[siswa.siswa_nis]|required',
+                'rules' => 'is_unique[siswa.siswa_nis]|required|numeric',
                 'errors' => [
-                    'required' => 'NIS wajib diisi',
-                    'is_unique' => 'Terpakai'
+                    'required' => '*NIS wajib diisi',
+                    'is_unique' => '*sudah terpakai',
+                    'numeric' => '*isian angka'
                 ]
             ]
         ])) {
@@ -55,7 +60,7 @@ class Siswa extends BaseController
             return redirect()->to('tambah')->withInput();
         } else {
             $var = $this->request->getVar();
-            $this->siswa->insert([
+            $this->siswa->save([
                 'siswa_nis' => $var['siswa_nis'],
                 'siswa_nama' => $var['siswa_nama'],
                 'siswa_nick' => $var['siswa_nick'],
@@ -76,5 +81,56 @@ class Siswa extends BaseController
             session()->setFlashData('data', $var['siswa_nama']);
             return redirect()->to('/siswa/');
         }
+    }
+    public function perbarui()
+    {
+        $var = $this->request->getVar();
+        $va = $this->siswa->find($var['siswa_id']);
+        $strval = "required|numeric";
+        
+        if ($var['siswa_nis'] != $va['siswa_nis'])
+            $strval .= "|is_unique[siswa.siswa_nis]";
+
+        if (!$this->validate([
+            'siswa_nis' => [
+                'rules' => $strval,
+                'errors' => [
+                    'required' => '*NIS wajib diisi',
+                    'is_unique' => '*sudah terpakai',
+                    'numeric' => '*isian angka'
+                ]
+            ]
+        ])) {
+            // $val=\Config\Services::validation();
+            return redirect()->to('ubah/'.$va['siswa_nis'])->withInput();
+        } else {
+            $this->siswa->update($va['siswa_id'],[
+                'siswa_nis' => $var['siswa_nis'],
+                'siswa_nama' => $var['siswa_nama'],
+                'siswa_nick' => $var['siswa_nick'],
+                'siswa_jk' => $var['siswa_jk'],
+                'siswa_tempat_lahir' => $var['siswa_tempat_lahir'],
+                'siswa_tanggal_lahir' => $var['siswa_tanggal_lahir'],
+                'siswa_agama' => $var['siswa_agama'],
+                'siswa_kewarganegaraan' => $var['siswa_kewarganegaraan'],
+                'siswa_order' => $var['siswa_order'],
+                'siswa_kandung' => $var['siswa_kandung'],
+                'siswa_tiri' => $var['siswa_tiri'],
+                'siswa_angkat' => $var['siswa_angkat'],
+                'siswa_status' => $var['siswa_status'],
+                'siswa_bahasa' => $var['siswa_bahasa'],
+            ]);
+
+            session()->setFlashData('update', true);
+            session()->setFlashData('data', $var['siswa_nama']);
+            return redirect()->to('/siswa/');
+        }
+    }
+    public function hapus($nis)
+    {
+        $val = $this->siswa->where('siswa_nis', $nis)->first();
+        $this->siswa->delete($val['siswa_id']);
+        session()->setFlashData('delete', true);
+        return redirect()->to('/siswa/');
     }
 }
