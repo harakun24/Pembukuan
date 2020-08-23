@@ -6,8 +6,8 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?= route_to('siswa_list'); ?>">Pembukuan</a></li>
                 <li class="breadcrumb-item"><a href="<?= route_to('siswa_list'); ?>">Siswa</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Ubah</li>
-                <li class="breadcrumb-item active" aria-current="page"><?= $siswa['siswa_nis']; ?></li>
+                <li class="breadcrumb-item"><a href="<?= route_to('siswa_detail',$siswa['siswa_nis']); ?>"><?= $siswa['siswa_nama']; ?></a></li>
+                <li class="breadcrumb-item active" aria-current="page">Pribadi</li>
             </ol>
         </nav>
     </div>
@@ -211,7 +211,7 @@
             })
             .then((willDelete) => {
                 if (willDelete) {
-                    document.location.replace('/');
+                    document.location.replace('<?= route_to('siswa_detail',$siswa['siswa_nis']); ?>');
                 } else {}
             });
     }

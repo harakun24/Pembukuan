@@ -44,7 +44,9 @@ $routes->group('bio', function ($routes) {
 $routes->group('siswa',function($routes){
 	$routes->add('/', 'Siswa::index',['as'=>'siswa_list']);
 	$routes->add('tambah', 'Siswa::tambah',['as'=>'siswa_add']);
-	$routes->add('ubah/(:num)', 'Siswa::ubah/$1',['as'=>'siswa_edit']);
+	$routes->add('(:num)/detail', 'Siswa::detail/$1',['as'=>'siswa_detail']);
+	$routes->add('(:num)/detail/alamat', 'Siswa::alamat/$1',['as'=>'siswa_alamat']);
+	$routes->add('(:num)/detail/pribadi', 'Siswa::ubah/$1',['as'=>'siswa_edit']);
 	$routes->post('simpan', 'Siswa::simpan',['as'=>'siswa_save']);
 	$routes->patch('perbarui', 'Siswa::perbarui', ['as' => 'siswa_update']);
 	$routes->delete('hapus/(:num)', 'Siswa::hapus/$1',['as'=>'siswa_hapus']);

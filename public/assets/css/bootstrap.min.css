@@ -10051,9 +10051,13 @@ button.close {
 }
 
 .thead-dark {
-    color: #fff;
-    /* background-color: #343a40; */
-    background-color: #585b5e;
+    color: #343a40;
+    border: 1px solid white;
+    background-color: #ebedf0;
+}
+
+li a {
+    text-decoration: none;
 }
 
 

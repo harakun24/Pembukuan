@@ -38,7 +38,7 @@ class Siswa extends BaseController
             'val' => $val,
             'siswa' => $this->siswa->where('siswa_nis', $nis)->first()
         ];
-        return view('siswa/edit_siswa', $data);
+        return $data['siswa'] == null ? redirect()->to('/siswa/') : view('siswa/edit_siswa', $data);
     }
     public function tes($id)
     {
@@ -79,7 +79,7 @@ class Siswa extends BaseController
 
             session()->setFlashData('insert', true);
             session()->setFlashData('data', $var['siswa_nama']);
-            return redirect()->to('/siswa/');
+            return redirect()->to('/siswa/' . $var['siswa_nis'] . '/detail');
         }
     }
     public function perbarui()
@@ -87,7 +87,7 @@ class Siswa extends BaseController
         $var = $this->request->getVar();
         $va = $this->siswa->find($var['siswa_id']);
         $strval = "required|numeric";
-        
+
         if ($var['siswa_nis'] != $va['siswa_nis'])
             $strval .= "|is_unique[siswa.siswa_nis]";
 
@@ -102,9 +102,9 @@ class Siswa extends BaseController
             ]
         ])) {
             // $val=\Config\Services::validation();
-            return redirect()->to('ubah/'.$va['siswa_nis'])->withInput();
+            return redirect()->to($va['siswa_nis'] . '/detail/pribadi')->withInput();
         } else {
-            $this->siswa->update($va['siswa_id'],[
+            $this->siswa->update($va['siswa_id'], [
                 'siswa_nis' => $var['siswa_nis'],
                 'siswa_nama' => $var['siswa_nama'],
                 'siswa_nick' => $var['siswa_nick'],
@@ -123,7 +123,7 @@ class Siswa extends BaseController
 
             session()->setFlashData('update', true);
             session()->setFlashData('data', $var['siswa_nama']);
-            return redirect()->to('/siswa/');
+            return redirect()->to('/siswa/' . $var['siswa_nis'] . '/detail');
         }
     }
     public function hapus($nis)
@@ -132,5 +132,22 @@ class Siswa extends BaseController
         $this->siswa->delete($val['siswa_id']);
         session()->setFlashData('delete', true);
         return redirect()->to('/siswa/');
+    }
+    public function detail($nis)
+    {
+        $data = [
+            'siswa' => $this->siswa->where('siswa_nis', $nis)->first()
+        ];
+        return $data['siswa'] == null ? redirect()->to('/siswa/') : view('siswa/detail_siswa', $data);
+    }
+    public function alamat($nis)
+    {
+        $val = \Config\Services::validation();
+
+        $data = [
+            'val' => $val,
+            'siswa' => $this->siswa->where('siswa_nis', $nis)->first()
+        ];
+        return $data['siswa'] == null ? redirect()->to('/siswa/') : view('siswa/alamat_siswa', $data);
     }
 }

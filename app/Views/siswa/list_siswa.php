@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <table class="table table-bordered table-hover text-center">
-                    <thead class="text-center">
+                    <thead class="text-center thead-dark">
                         <tr>
                             <th class="d-none d-md-table-cell">No</th>
                             <th class="d-none d-sm-table-cell">Nis</th>
@@ -48,12 +48,12 @@
                                     <td class="d-none d-md-table-cell"><?= $i++; ?></td>
                                     <td class="d-none d-sm-table-cell"><?= $s['siswa_nis']; ?></td>
                                     <td><?= $s['siswa_nama']; ?></td>
-                                    <td class="d-none d-lg-table-cell"><?= $s['siswa_nick']?$s['siswa_nick']:'<i class="text-warning">NULL</i>'; ?></td>
-                                    <td class="d-none d-lg-table-cell"><?= $s['siswa_jk']?$s['siswa_jk']:'<i class="text-warning">NULL</i>'; ?></td>
-                                    <td class="d-none d-sm-table-cell"><?= $s['siswa_kelas']?$s['siswa_kelas']:'<i class="text-warning">NULL</i>'; ?></td>
-                                    <td class="d-none d-md-table-cell"><?= $s['siswa_prodi']?$s['siswa_prodi']:'<i class="text-warning">NULL</i>'; ?></td>
+                                    <td class="d-none d-lg-table-cell"><?= $s['siswa_nick']?$s['siswa_nick']:'<i class="text-danger">NULL</i>'; ?></td>
+                                    <td class="d-none d-lg-table-cell"><?= $s['siswa_jk']?$s['siswa_jk']:'<i class="text-danger">NULL</i>'; ?></td>
+                                    <td class="d-none d-sm-table-cell"><?= $s['siswa_kelas']?$s['siswa_kelas']:'<i class="text-danger">NULL</i>'; ?></td>
+                                    <td class="d-none d-md-table-cell"><?= $s['siswa_prodi']?$s['siswa_prodi']:'<i class="text-danger">NULL</i>'; ?></td>
                                     <td class="text-center">
-                                        <a href="<?= route_to('siswa_edit', $s['siswa_nis']); ?>" class="btn btn-outline-success btn-sm mx-2"><span class="d-none d-md-inline">detail</span> <i class="fa fa-external-link-alt d-md-none d-inline"></i></a>
+                                        <a href="<?= route_to('siswa_detail', $s['siswa_nis']); ?>" class="btn btn-outline-success btn-sm mx-2"><span class="d-none d-md-inline">detail</span> <i class="fa fa-external-link-alt d-md-none d-inline"></i></a>
                                         <form action="<?= route_to('siswa_hapus', $s['siswa_nis']); ?>" class="form d-inline" method="post">
                                         <?= csrf_field(); ?>    
                                         <input type="hidden" name="_method" value="delete"/>
