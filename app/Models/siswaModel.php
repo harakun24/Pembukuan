@@ -34,6 +34,15 @@ class siswaModel extends Model
         'siswa_golongan_darah',
         'siswa_tinggi',
         'siswa_berat',
+        'siswa_dari',
+        'siswa_sebelum_tanggal',
+        'siswa_sebelum_sttb',
+        'siswa_sebelum_lama',
+        'siswa_pindah_dari',
+        'siswa_pindah_alasan',
+        'siswa_kelas',
+        'siswa_prodi',
+        'siswa_tanggal_diterima',
     ];
 
     // protected $useTimestamps = true;

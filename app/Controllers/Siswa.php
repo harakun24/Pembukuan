@@ -87,8 +87,8 @@ class Siswa extends BaseController
     }
     public function simpan_alamat($nis)
     {
-        $va=$this->siswa->where('siswa_nis', $nis)->first();
-        if ( $va == null)
+        $va = $this->siswa->where('siswa_nis', $nis)->first();
+        if ($va == null)
             return redirect()->to('/siswa');
         if (!$this->validate([
             'siswa_telepon' => [
@@ -123,13 +123,33 @@ class Siswa extends BaseController
     }
     public function simpan_penyakit($nis)
     {
-        $va=$this->siswa->where('siswa_nis', $nis)->first();
+        $va = $this->siswa->where('siswa_nis', $nis)->first();
         $var = $this->request->getVar();
         $this->siswa->update($va['siswa_id'], [
             'siswa_golongan_darah' => $var['siswa_golongan_darah'],
             'siswa_kelainan' => $var['siswa_kelainan'],
             'siswa_tinggi' => $var['siswa_tinggi'],
             'siswa_berat' => $var['siswa_berat'],
+        ]);
+
+        session()->setFlashData('update', true);
+        session()->setFlashData('data', $va['siswa_nama']);
+        return redirect()->to('/siswa/' . $nis . '/detail');
+    }
+    public function simpan_pendidikan($nis)
+    {
+        $va = $this->siswa->where('siswa_nis', $nis)->first();
+        $var = $this->request->getVar();
+        $this->siswa->update($va['siswa_id'], [
+            'siswa_dari' => $var['siswa_dari'],
+            'siswa_sebelum_tanggal' => $var['siswa_sebelum_tanggal'],
+            'siswa_sebelum_sttb' => $var['siswa_sebelum_sttb'],
+            'siswa_sebelum_lama' => $var['siswa_sebelum_lama'],
+            'siswa_pindah_dari' => $var['siswa_pindah_dari'],
+            'siswa_pindah_alasan' => $var['siswa_pindah_alasan'],
+            'siswa_kelas' => $var['siswa_kelas'],
+            'siswa_prodi' => $var['siswa_prodi'],
+            'siswa_tanggal_diterima' => $var['siswa_tanggal_diterima'],
         ]);
 
         session()->setFlashData('update', true);
@@ -180,12 +200,13 @@ class Siswa extends BaseController
             return redirect()->to('/siswa/' . $var['siswa_nis'] . '/detail');
         }
     }
-    public function penyakit($nis){
+    public function penyakit($nis)
+    {
         $data = [
-            'siswa'=>$this->siswa->where('siswa_nis',$nis)->first(),
-            'penyakit'=>$this->penyakit->where('penyakit_siswa',$nis)->findAll()
+            'siswa' => $this->siswa->where('siswa_nis', $nis)->first(),
+            'penyakit' => $this->penyakit->where('penyakit_siswa', $nis)->findAll()
         ];
-        return view('siswa/penyakit_siswa',$data);
+        return view('siswa/penyakit_siswa', $data);
     }
     public function hapus($nis)
     {
@@ -198,7 +219,7 @@ class Siswa extends BaseController
     {
         $data = [
             'siswa' => $this->siswa->where('siswa_nis', $nis)->first(),
-            'penyakit'=>$this->penyakit->where('penyakit_siswa',$nis)->findAll()
+            'penyakit' => $this->penyakit->where('penyakit_siswa', $nis)->findAll()
 
         ];
         return $data['siswa'] == null ? redirect()->to('/siswa/') : view('siswa/detail_siswa', $data);
@@ -212,5 +233,15 @@ class Siswa extends BaseController
             'siswa' => $this->siswa->where('siswa_nis', $nis)->first()
         ];
         return $data['siswa'] == null ? redirect()->to('/siswa/') : view('siswa/alamat_siswa', $data);
+    }
+    public function pendidikan($nis)
+    {
+        $val = \Config\Services::validation();
+
+        $data = [
+            'val' => $val,
+            'siswa' => $this->siswa->where('siswa_nis', $nis)->first()
+        ];
+        return $data['siswa'] == null ? redirect()->to('/siswa/') : view('siswa/pendidikan_siswa', $data);
     }
 }

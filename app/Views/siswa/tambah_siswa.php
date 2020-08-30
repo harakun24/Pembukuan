@@ -10,12 +10,6 @@
             </ol>
         </nav>
     </div>
-    <div class="col-sm-12 col-md-4 d-flex align-items-center justify-content-center">
-        <div class="bd-callout bd-callout-primary col-12">
-            <h4><span class="typed"></span> &nbsp;</h4>
-            <p>Berisi biodata profil siswa. Pengisian data tidak harus lengkap, selama mencantumkan nomor induk siswa (nis), nama serta tempat dan tanggal lahir.</p>
-        </div>
-    </div>
     <div class="col-sm-12 col-md-7 ml-0">
         <div class="card">
             <div class="card-body">
@@ -185,12 +179,7 @@
         </div>
     </div>
 </div>
-<script src="/assets/js/typed.js"></script>
 <script>
-    var typed = new Typed('.typed', {
-        strings: ["Keterangan Pribadi"],
-        typeSpeed: 80,
-        showCursor: false
-    });
+
 </script>
 <?= $this->endSection() ?>

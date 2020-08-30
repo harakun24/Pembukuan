@@ -53,6 +53,8 @@ $routes->group('siswa',function($routes){
 	$routes->post('(:num)/detail/alamat/simpan', 'Siswa::simpan_alamat/$1',['as'=>'siswa_alamat_save']);
 	$routes->add('(:num)/detail/penyakit', 'Siswa::penyakit/$1',['as'=>'siswa_penyakit']);
 	$routes->post('(:num)/detail/penyakit/simpan', 'Siswa::simpan_penyakit/$1',['as'=>'siswa_penyakit_save']);
+	$routes->add('(:num)/detail/pendidikan', 'Siswa::pendidikan/$1',['as'=>'siswa_pendidikan']);
+	$routes->post('(:num)/detail/pendidikan/simpan', 'Siswa::simpan_pendidikan/$1',['as'=>'siswa_pendidikan_save']);
 	
 });
 

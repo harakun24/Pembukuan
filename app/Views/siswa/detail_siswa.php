@@ -103,7 +103,7 @@
             </div>
             <div class="card col-12 mb-3">
                 <div class="card-body">
-                    <a href="#" class="position-absolute" style="right:4%;top:8px;cursor:pointer;font-size:120%">
+                    <a href="<?= route_to('siswa_pendidikan',$siswa['siswa_nis']); ?>" class="position-absolute" style="right:4%;top:8px;cursor:pointer;font-size:120%">
                         <i class="fa fa-cog text-secondary"></i>
                     </a>
                     <h4>D. Data Pendidikan</h4>
@@ -113,17 +113,17 @@
                             <ol style="list-style-type:lower-alpha">
                                 <li>
                                     <div class="d-flex border-bottom">
-                                        <h class="col-5">Lulusan dari</h>: AB+
+                                        <h class="col-5">Lulusan dari</h>: <?= $siswa['siswa_dari']; ?>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="d-flex border-bottom">
-                                        <h class="col-5">Tanggal dan Nomor STTB</h>: AB+
+                                        <h class="col-5">Tanggal dan Nomor STTB</h>: <?= $siswa['siswa_sebelum_tanggal'].','.$siswa['siswa_sebelum_sttb']; ?>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="d-flex border-bottom">
-                                        <h class="col-5">Lama belajar</h>: AB+
+                                        <h class="col-5">Lama belajar</h>: <?= $siswa['siswa_sebelum_lama'].' tahun'; ?>
                                     </div>
                                 </li>
                             </ol>
@@ -133,12 +133,12 @@
                             <ol style="list-style-type:lower-alpha">
                                 <li>
                                     <div class="d-flex border-bottom">
-                                        <h class="col-5">Dari Sekolah / Madrasah</h>: AB+
+                                        <h class="col-5">Dari Sekolah / Madrasah</h>: <?= $siswa['siswa_pindah_dari']; ?>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="d-flex border-bottom">
-                                        <h class="col-5">Alasan</h>: AB+
+                                        <h class="col-5">Alasan</h>: &nbsp;<span><?= $siswa['siswa_pindah_alasan']; ?></span>
                                     </div>
                                 </li>
                             </ol>
@@ -148,17 +148,17 @@
                             <ol style="list-style-type:lower-alpha">
                                 <li>
                                     <div class="d-flex border-bottom">
-                                        <h class="col-5">Tingkat/Kelas</h>: AB+
+                                        <h class="col-5">Tingkat/Kelas</h>: <?= $siswa['siswa_kelas']; ?>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="d-flex border-bottom">
-                                        <h class="col-5">Program Studi</h>: AB+
+                                        <h class="col-5">Program Studi</h>: <?= $siswa['siswa_prodi']; ?>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="d-flex border-bottom">
-                                        <h class="col-5">Tanggal</h>: AB+
+                                        <h class="col-5">Tanggal</h>: <?= $siswa['siswa_tanggal_diterima']; ?>
                                     </div>
                                 </li>
                             </ol>
@@ -185,13 +185,13 @@
                     <h4>B. Tempat Tinggal</h4>
                     <ol style="line-height: 160%;">
                         <li>
-                            <div class="d-flex justify-content-between border-bottom">
-                                <h class="col-5">Alamat</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span> <?= $siswa['siswa_alamat']; ?>
+                            <div class="d-flex border-bottom">
+                                <h class="col-5">Alamat</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span> <span><?= $siswa['siswa_alamat']?$siswa['siswa_alamat']:'belum ada alamat'; ?></span> 
                             </div>
                         </li>
                         <li>
-                            <div class="d-flex justify-content-between border-bottom">
-                                <h class="col-5">Alamat Wali</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span> <?= $siswa['siswa_alamat_wali']; ?>
+                            <div class="d-flex border-bottom">
+                                <h class="col-5">Alamat Wali</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span> <span><?= $siswa['siswa_alamat']?$siswa['siswa_alamat_wali']:'belum ada alamat'; ?></span> 
                             </div>
                         </li>
                         <li>
