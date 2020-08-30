@@ -26,6 +26,10 @@ class SiswaPribadi extends \CodeIgniter\Database\Seeder
                 'siswa_angkat' => $faker->numberBetween($min = 0, $max = 3),
                 'siswa_status' => $faker->randomElement($array = array('lengkap', 'yatim', 'piatu', 'yatim piatu')),
                 'siswa_bahasa' => $faker->randomElement($array = array('Bahasa Melayu', 'Bahasa Indonesia', 'Bahasa Jawa', 'Bahasa Inggris', 'Bahasa Korea')),
+                'siswa_alamat' => $faker->address,
+                'siswa_telepon' => $faker->phoneNumber,
+                'siswa_tinggal' => $faker->randomElement($array = array('Orang tua', 'Saudara', 'Asrama', 'Kost')),
+                'siswa_jarak' => $faker->randomDigitNotNull,
             ];
 
 

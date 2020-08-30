@@ -24,13 +24,21 @@ class siswaModel extends Model
         'siswa_tiri',
         'siswa_angkat',
         'siswa_status',
-        'siswa_bahasa'
+        'siswa_bahasa',
+        'siswa_alamat',
+        'siswa_telepon',
+        'siswa_tinggal',
+        'siswa_jarak',
     ];
 
     // protected $useTimestamps = true;
     public function search($key)
     {
-        return $this->table('siswa')->like('siswa_nama', $key);
+        return $this->table('siswa')->like('siswa_nama', $key)
+        ->orLike('siswa_nis',$key)
+        ->orLike('siswa_nick',$key)
+        ->orLike('siswa_kelas',$key)
+        ->orLike('siswa_prodi',$key);
     }
     
 }

@@ -5,9 +5,11 @@ namespace App\Controllers;
 class Siswa extends BaseController
 {
     private $siswa;
+    private $penyakit;
     function __construct()
     {
         $this->siswa = new \App\Models\siswaModel();
+        $this->penyakit = new \App\Models\penyakitModel();
     }
     public function index()
     {
@@ -42,7 +44,8 @@ class Siswa extends BaseController
     }
     public function tes($id)
     {
-        echo $this->siswa->where('siswa_nis', $id)->countAllResults();
+        $faker = \Faker\Factory::create('id_ID');
+        echo $faker->address;
     }
     public function simpan()
     {
@@ -81,6 +84,44 @@ class Siswa extends BaseController
             session()->setFlashData('data', $var['siswa_nama']);
             return redirect()->to('/siswa/' . $var['siswa_nis'] . '/detail');
         }
+    }
+    public function simpan_alamat($nis)
+    {
+        $va=$this->siswa->where('siswa_nis', $nis)->first();
+        if ( $va == null)
+            return redirect()->to('/siswa');
+        if (!$this->validate([
+            'siswa_telepon' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => '*Nomor telepon kosong',
+                    'numeric' => '*isian angka'
+                ]
+            ],
+            'siswa_jarak' => [
+                'rules' => 'greater_than[0]',
+                'errors' => [
+                    'greater_than' => 'Tidak boleh 0'
+                ]
+            ]
+        ])) {
+            // $val=\Config\Services::validation();
+            return redirect()->to('/siswa/' . $nis . '/detail/alamat')->withInput();
+        } else {
+            $var = $this->request->getVar();
+            $this->siswa->update($va['siswa_id'], [
+                'siswa_alamat' => $var['siswa_alamat'],
+                'siswa_telepon' => $var['siswa_telepon'],
+                'siswa_tinggal' => $var['siswa_tinggal'],
+                'siswa_jarak' => $var['siswa_jarak'],
+            ]);
+
+            // session()->setFlashData('insert', true);
+            // session()->setFlashData('data', $var['siswa_nama']);
+            return redirect()->to('/siswa/' . $nis . '/detail');
+            // dd($var);
+        }
+        dd($this->request->getVar());
     }
     public function perbarui()
     {
@@ -126,6 +167,13 @@ class Siswa extends BaseController
             return redirect()->to('/siswa/' . $var['siswa_nis'] . '/detail');
         }
     }
+    public function penyakit($nis){
+        $data = [
+            'siswa'=>$this->siswa->where('siswa_nis',$nis)->first(),
+            'penyakit'=>$this->penyakit->where('penyakit_siswa',$nis)->findAll()
+        ];
+        return view('siswa/penyakit_siswa',$data);
+    }
     public function hapus($nis)
     {
         $val = $this->siswa->where('siswa_nis', $nis)->first();
@@ -136,7 +184,9 @@ class Siswa extends BaseController
     public function detail($nis)
     {
         $data = [
-            'siswa' => $this->siswa->where('siswa_nis', $nis)->first()
+            'siswa' => $this->siswa->where('siswa_nis', $nis)->first(),
+            'penyakit'=>$this->penyakit->where('penyakit_siswa',$nis)->findAll()
+
         ];
         return $data['siswa'] == null ? redirect()->to('/siswa/') : view('siswa/detail_siswa', $data);
     }

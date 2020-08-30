@@ -66,7 +66,7 @@
                         else :
                             ?>
                             <tr>
-                                <td colspan="7">Data Kosong</td>
+                                <td colspan="8">Data Kosong</td>
                             </tr>
                         <?php
                         endif;

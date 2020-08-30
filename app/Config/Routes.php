@@ -47,10 +47,18 @@ $routes->group('siswa',function($routes){
 	$routes->add('(:num)/detail', 'Siswa::detail/$1',['as'=>'siswa_detail']);
 	$routes->add('(:num)/detail/alamat', 'Siswa::alamat/$1',['as'=>'siswa_alamat']);
 	$routes->add('(:num)/detail/pribadi', 'Siswa::ubah/$1',['as'=>'siswa_edit']);
+	$routes->add('(:num)/detail/penyakit', 'Siswa::penyakit/$1',['as'=>'siswa_penyakit']);
 	$routes->post('simpan', 'Siswa::simpan',['as'=>'siswa_save']);
+	$routes->post('(:num)/detail/alamat/simpan', 'Siswa::simpan_alamat/$1',['as'=>'siswa_alamat_save']);
 	$routes->patch('perbarui', 'Siswa::perbarui', ['as' => 'siswa_update']);
 	$routes->delete('hapus/(:num)', 'Siswa::hapus/$1',['as'=>'siswa_hapus']);
 	
+});
+
+$routes->group('penyakit',function($routes){
+	$routes->add('tambah/(:num)', 'Penyakit::simpan/$1',['as'=>'penyakit_save']);
+	$routes->add('perbarui/(:num)', 'Penyakit::perbarui/$1',['as'=>'penyakit_update']);
+	$routes->add('hapus/(:num)', 'Penyakit::hapus/$1',['as'=>'penyakit_hapus']);
 });
 
 

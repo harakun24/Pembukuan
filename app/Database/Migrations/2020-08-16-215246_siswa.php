@@ -124,12 +124,17 @@ class Siswa extends Migration
 				'null'           	=> true
 			],
 			'siswa_jarak'	 				=> [
-				'type' 				=> 'int',
+				'type' 				=> 'float',
 				'null'           	=> true
 			],
 			'siswa_golongan_darah'			=> [
 				'type' 				=> 'varchar',
 				'constraint' 		=> 3,
+				'null'           	=> true
+			],
+			'siswa_kelainan'				=> [
+				'type' 				=> 'varchar',
+				'constraint' 		=> 255,
 				'null'           	=> true
 			],
 			'siswa_tinggi'	 				=> [
