@@ -48,17 +48,17 @@
                                     <td class="d-none d-md-table-cell"><?= $i++; ?></td>
                                     <td class="d-none d-sm-table-cell"><?= $s['siswa_nis']; ?></td>
                                     <td><?= $s['siswa_nama']; ?></td>
-                                    <td class="d-none d-lg-table-cell"><?= $s['siswa_nick']?$s['siswa_nick']:'<i class="text-danger">NULL</i>'; ?></td>
-                                    <td class="d-none d-lg-table-cell"><?= $s['siswa_jk']?$s['siswa_jk']:'<i class="text-danger">NULL</i>'; ?></td>
-                                    <td class="d-none d-sm-table-cell"><?= $s['siswa_kelas']?$s['siswa_kelas']:'<i class="text-danger">NULL</i>'; ?></td>
-                                    <td class="d-none d-md-table-cell"><?= $s['siswa_prodi']?$s['siswa_prodi']:'<i class="text-danger">NULL</i>'; ?></td>
+                                    <td class="d-none d-lg-table-cell"><?= $s['siswa_nick'] ? $s['siswa_nick'] : '<i class="text-danger">NULL</i>'; ?></td>
+                                    <td class="d-none d-lg-table-cell"><?= $s['siswa_jk'] ? $s['siswa_jk'] : '<i class="text-danger">NULL</i>'; ?></td>
+                                    <td class="d-none d-sm-table-cell"><?= $s['siswa_kelas'] ? $s['siswa_kelas'] : '<i class="text-danger">NULL</i>'; ?></td>
+                                    <td class="d-none d-md-table-cell"><?= $s['siswa_prodi'] ? $s['siswa_prodi'] : '<i class="text-danger">NULL</i>'; ?></td>
                                     <td class="text-center">
                                         <a href="<?= route_to('siswa_detail', $s['siswa_nis']); ?>" class="btn btn-outline-success btn-sm mx-2"><span class="d-none d-md-inline">detail</span> <i class="fa fa-external-link-alt d-md-none d-inline"></i></a>
                                         <form action="<?= route_to('siswa_hapus', $s['siswa_nis']); ?>" class="form d-inline" method="post">
-                                        <?= csrf_field(); ?>    
-                                        <input type="hidden" name="_method" value="delete"/>
+                                            <?= csrf_field(); ?>
+                                            <input type="hidden" name="_method" value="delete" />
                                             <a class="btn btn-danger btn-sm mx-2" onclick="hapus('<?= $s['siswa_nis']; ?>')"><i class="fa fa-trash-alt"></i></a>
-                                            <button id="sub-<?=$s['siswa_nis'];?>" type="submit" class="d-none btn btn-danger btn-sm mx-2"><i class="fa fa-trash-alt"></i></button>
+                                            <button id="sub-<?= $s['siswa_nis']; ?>" type="submit" class="d-none btn btn-danger btn-sm mx-2"><i class="fa fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>
@@ -82,45 +82,79 @@
         </div>
     </div>
 </div>
-<script src="/assets/js/sweetalert.min.js"></script>
+<script src="/assets/js/sweetalert2-all.js"></script>
 
 <script>
-    <?php if (session()->getFlashData('insert')) : ?>
+    <?php if (session()->getFlashData('delete')) : ?>
 
-        swal({
-            text: "Berhasil menambah <?= session()->getFlashData('data'); ?> ",
-            icon: "success",
-
-        });
-    <?php elseif (session()->getFlashData('update')) : ?>
-        swal({
-            text: "Data berhasil dirubah",
-            icon: "success",
-        });
-    <?php elseif (session()->getFlashData('delete')) : ?>
-
-        swal({
-            text: "Data berhasil dihapus",
-            icon: "success",
-        });
-    <?php else : ?>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil dihapus',
+            showConfirmButton: false,
+            timer: 950
+        })
 
     <?php endif ?>
 
     function hapus(id) {
-        swal({
-                title: "Peringatan",
-                text: "Data yang anda pilih akan dihapus",
-                icon: "warning",
-                buttons: ['batal', 'lanjut'],
-                dangerMode: true,
+        Swal.fire({
+                title: 'Apakah anda yakin?',
+                text: "Data yang dipilih akan dihapus",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, lanjut'
             })
             .then((willDelete) => {
-                if (willDelete) {
-                    var btn=document.getElementById('sub-'+id);
+                if (willDelete.value) {
+                    var btn = document.getElementById('sub-' + id);
                     btn.click();
                 } else {}
             });
+    }
+
+    function paging() {
+        var inputValue;
+        Swal.fire({
+            title: 'Masukkan halaman',
+            input: 'number',
+            inputValue: inputValue,
+            showCancelButton: true,
+            inputValidator: (value) => {
+                if (!value || value < 1) {
+                    return 'masukkan halaman yang valid'
+                }
+                let url = window.location.href;
+                url = url.split("=")
+                if (url.length == 1) {
+                    url[0] += "?page_table="+value;
+                }
+                if (url.length == 2) {
+                    url[0] += '=';
+                    url[2] = "&page_table="+value;
+                    result = "";
+                    for (i = 0; i < url.length; i++) {
+
+                        result += url[i] ;
+                    }
+                    url[0]=result.substring(0, result.length - 1);
+                    url[0]+=3;
+
+                } else if (url.length == 3) {
+                    result = "";
+                    url[url.length - 1] = value;
+                    for (i = 0; i < url.length; i++) {
+
+                        result += url[i] + "=";
+                    }
+                    url[0] = result;
+                    url[0] = url[0].substring(0, url[0].length - 1)
+                }
+                document.location.replace(url[0]);
+
+            }
+        })
     }
 </script>
 <?= $this->endSection() ?>

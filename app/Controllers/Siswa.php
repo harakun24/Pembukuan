@@ -105,7 +105,6 @@ class Siswa extends BaseController
                 ]
             ]
         ])) {
-            // $val=\Config\Services::validation();
             return redirect()->to('/siswa/' . $nis . '/detail/alamat')->withInput();
         } else {
             $var = $this->request->getVar();
@@ -116,12 +115,26 @@ class Siswa extends BaseController
                 'siswa_jarak' => $var['siswa_jarak'],
             ]);
 
-            // session()->setFlashData('insert', true);
-            // session()->setFlashData('data', $var['siswa_nama']);
+            session()->setFlashData('update', true);
+            session()->setFlashData('data', $va['siswa_nama']);
             return redirect()->to('/siswa/' . $nis . '/detail');
             // dd($var);
         }
-        dd($this->request->getVar());
+    }
+    public function simpan_penyakit($nis)
+    {
+        $va=$this->siswa->where('siswa_nis', $nis)->first();
+        $var = $this->request->getVar();
+        $this->siswa->update($va['siswa_id'], [
+            'siswa_golongan_darah' => $var['siswa_golongan_darah'],
+            'siswa_kelainan' => $var['siswa_kelainan'],
+            'siswa_tinggi' => $var['siswa_tinggi'],
+            'siswa_berat' => $var['siswa_berat'],
+        ]);
+
+        session()->setFlashData('update', true);
+        session()->setFlashData('data', $va['siswa_nama']);
+        return redirect()->to('/siswa/' . $nis . '/detail');
     }
     public function perbarui()
     {

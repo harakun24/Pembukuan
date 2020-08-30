@@ -26,9 +26,14 @@ class siswaModel extends Model
         'siswa_status',
         'siswa_bahasa',
         'siswa_alamat',
+        'siswa_alamat_wali',
         'siswa_telepon',
         'siswa_tinggal',
         'siswa_jarak',
+        'siswa_kelainan',
+        'siswa_golongan_darah',
+        'siswa_tinggi',
+        'siswa_berat',
     ];
 
     // protected $useTimestamps = true;

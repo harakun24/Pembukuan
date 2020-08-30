@@ -27,21 +27,19 @@ class SiswaPribadi extends \CodeIgniter\Database\Seeder
                 'siswa_status' => $faker->randomElement($array = array('lengkap', 'yatim', 'piatu', 'yatim piatu')),
                 'siswa_bahasa' => $faker->randomElement($array = array('Bahasa Melayu', 'Bahasa Indonesia', 'Bahasa Jawa', 'Bahasa Inggris', 'Bahasa Korea')),
                 'siswa_alamat' => $faker->address,
+                'siswa_alamat_wali' => $faker->address,
                 'siswa_telepon' => $faker->phoneNumber,
                 'siswa_tinggal' => $faker->randomElement($array = array('Orang tua', 'Saudara', 'Asrama', 'Kost')),
                 'siswa_jarak' => $faker->randomDigitNotNull,
+                'siswa_golongan_darah' => $faker->randomElement($array = array('O', 'A', 'B', 'AB')),
+                'siswa_tinggi' => $faker->numberBetween($min = 155, $max = 182),
+                'siswa_berat' => $faker->numberBetween($min = 48, $max = 80),
             ];
 
 
-            // Simple Queries
             $siswa = new \App\Models\siswaModel();
-            // $this->db->query(
-            //     "INSERT INTO biotes (nama, email) VALUES(:nama:, :email:)",
-            //     $data
-            //     );
+           
             $siswa->insert($data);
-            // $this->db->table('users')->insert($data);
         }
-        // Using Query Builder
     }
 }

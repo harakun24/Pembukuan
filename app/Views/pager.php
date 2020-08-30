@@ -9,7 +9,7 @@
         </li>
         <?php if ($pager->hasPrevious()) : ?>
             <li class="page-item">
-            <a class="page-link" disabled>
+            <a class="page-link" onclick="paging()">
                 ...
             </a>
         <?php endif ?>
@@ -22,7 +22,7 @@
         <?php endforeach ?>
         <?php if ($pager->hasNext()) : ?>
             <li class="page-item">
-            <a class="page-link" disabled>
+            <a class="page-link" onclick="paging()">
                 ...
             </a>
         <?php endif ?>

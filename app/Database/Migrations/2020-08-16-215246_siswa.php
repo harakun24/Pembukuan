@@ -84,33 +84,9 @@ class Siswa extends Migration
 				'constraint' 		=> 255,
 				'null'           	=> true
 			],
-			'siswa_alamat_full'				=> [
+			'siswa_alamat_wali'				=> [
 				'type' 				=> 'varchar',
-				'constraint' 		=> 10,
-				'null'           	=> true
-			],
-			'siswa_rt'	 					=> [
-				'type' 				=> 'int',
-				'null'           	=> true
-			],
-			'siswa_rw'	 					=> [
-				'type' 				=> 'int',
-				'null'           	=> true
-			],
-			'siswa_kelurahan'				=> [
-				'type' 				=> 'int',
-				'null'           	=> true
-			],
-			'siswa_kecamatan' 				=> [
-				'type' 				=> 'int',
-				'null'           	=> true
-			],
-			'siswa_kabupaten' 				=> [
-				'type' 				=> 'int',
-				'null'           	=> true
-			],
-			'siswa_provinsi' 				=> [
-				'type' 				=> 'int',
+				'constraint' 		=> 255,
 				'null'           	=> true
 			],
 			'siswa_telepon'	 				=> [

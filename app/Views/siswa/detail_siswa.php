@@ -1,13 +1,14 @@
 <?= $this->extend('template') ?>
 <?= $this->section('content') ?>
 <style>
-    .border-bottom{
-        padding-top:0.5em;
-        padding-bottom:0.5em;
-        border:none !important;
+    .border-bottom {
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        border: none !important;
     }
-    .border-bottom:hover{
-        background:#e9ebee;
+
+    .border-bottom:hover {
+        background: #e9ebee;
     }
 </style>
 <div class="row d-flex justify-content-center position-relative">
@@ -31,70 +32,70 @@
                     <ol style="line-height: 160%;">
                         <li>
                             <div class="d-flex border-bottom">
-                                <h class="col-5">NIS</h> &nbsp;&nbsp;&nbsp;&nbsp;<span>:</span> <?= $siswa['siswa_nis']; ?>
+                                <h class="col-5">NIS</h> &nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span> <?= $siswa['siswa_nis']; ?>
                             </div>
                         </li>
                         <li>Nama
                             <ol style="list-style-type: lower-alpha;" class=" border-bottom">
                                 <li>
                                     <div class="d-flex">
-                                        <h class="col-5">Nama Lengkap</h>: <?= $siswa['siswa_nama']; ?>
+                                        <h class="col-5">Nama Lengkap</h>:&nbsp; <?= $siswa['siswa_nama']; ?>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="d-flex">
-                                        <h class="col-5">Nama Panggilan</h> <span>:</span> <?= $siswa['siswa_nick']; ?>
+                                        <h class="col-5">Nama Panggilan</h> <span>:&nbsp;</span> <?= $siswa['siswa_nick']; ?>
                                     </div>
                                 </li>
                             </ol>
                         </li>
                         <li>
                             <div class="d-flex border-bottom">
-                                <h class="col-5">Jenis Kelamin</h> &nbsp;&nbsp;&nbsp;&nbsp;<span>:</span> <?= $siswa['siswa_jk']; ?>
+                                <h class="col-5">Jenis Kelamin</h> &nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span> <?= $siswa['siswa_jk']; ?>
                             </div>
                         </li>
                         <li>
                             <div class="d-flex border-bottom">
-                                <h class="col-5">TTL</h> &nbsp;&nbsp;&nbsp;&nbsp;<span>:</span> <?= $siswa['siswa_tempat_lahir']; ?>, <?= date('d-m-Y', strtotime($siswa['siswa_tanggal_lahir'])); ?>
+                                <h class="col-5">TTL</h> &nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span> <?= $siswa['siswa_tempat_lahir']; ?>, <?= date('d-m-Y', strtotime($siswa['siswa_tanggal_lahir'])); ?>
                             </div>
                         </li>
                         <li>
                             <div class="d-flex border-bottom">
-                                <h class="col-5">Agama</h> &nbsp;&nbsp;&nbsp;&nbsp;<span>:</span> <?= $siswa['siswa_agama']; ?>
+                                <h class="col-5">Agama</h> &nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span> <?= $siswa['siswa_agama']; ?>
                             </div>
                         </li>
                         <li>
                             <div class="d-flex border-bottom">
-                                <h class="col-5">Kewarganegaraan</h> &nbsp;&nbsp;&nbsp;&nbsp;<span>:</span> <?= $siswa['siswa_kewarganegaraan']; ?>
+                                <h class="col-5">Kewarganegaraan</h> &nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span> <?= $siswa['siswa_kewarganegaraan']; ?>
                             </div>
                         </li>
                         <li>
                             <div class="d-flex border-bottom">
-                                <h class="col-5">Anak ke</h> &nbsp;&nbsp;&nbsp;&nbsp;<span>:</span> <?= $siswa['siswa_order']; ?>
+                                <h class="col-5">Anak ke</h> &nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span> <?= $siswa['siswa_order']; ?>
                             </div>
                         </li>
                         <li>Jumlah saudara
                             <ol style="list-style-type: lower-alpha;" class=" border-bottom">
                                 <li>
                                     <div class="d-flex">
-                                        <h class="col-5">Kandung</h><span>:</span> <?= $siswa['siswa_kandung']; ?>
+                                        <h class="col-5">Kandung</h><span>:&nbsp;</span> <?= $siswa['siswa_kandung']; ?>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="d-flex">
-                                        <h class="col-5">Tiri</h><span>:</span> <?= $siswa['siswa_tiri']; ?>
+                                        <h class="col-5">Tiri</h><span>:&nbsp;</span> <?= $siswa['siswa_tiri']; ?>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="d-flex">
-                                        <h class="col-5">Angkat</h><span>:</span> <?= $siswa['siswa_angkat']; ?>
+                                        <h class="col-5">Angkat</h><span>:&nbsp;</span> <?= $siswa['siswa_angkat']; ?>
                                     </div>
                                 </li>
                             </ol>
                         </li>
                         <li>
-                            <div class="d-flex">
-                                <h class="col-5">Bahasa sehari-hari</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:</span> <?= $siswa['siswa_bahasa']; ?>
+                            <div class="d-flex border-bottom">
+                                <h class="col-5">Bahasa sehari-hari</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span> <?= $siswa['siswa_bahasa']; ?>
                             </div>
                         </li>
                     </ol>
@@ -111,17 +112,17 @@
                             <h class="col-5">Pendidikan sebelumnya</h>
                             <ol style="list-style-type:lower-alpha">
                                 <li>
-                                    <div class="d-flex">
+                                    <div class="d-flex border-bottom">
                                         <h class="col-5">Lulusan dari</h>: AB+
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="d-flex">
+                                    <div class="d-flex border-bottom">
                                         <h class="col-5">Tanggal dan Nomor STTB</h>: AB+
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="d-flex">
+                                    <div class="d-flex border-bottom">
                                         <h class="col-5">Lama belajar</h>: AB+
                                     </div>
                                 </li>
@@ -131,12 +132,12 @@
                             <h class="col-5">Pindahan</h>
                             <ol style="list-style-type:lower-alpha">
                                 <li>
-                                    <div class="d-flex">
+                                    <div class="d-flex border-bottom">
                                         <h class="col-5">Dari Sekolah / Madrasah</h>: AB+
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="d-flex">
+                                    <div class="d-flex border-bottom">
                                         <h class="col-5">Alasan</h>: AB+
                                     </div>
                                 </li>
@@ -146,17 +147,17 @@
                             <h class="col-5">Diterima di Madrasah ini</h>
                             <ol style="list-style-type:lower-alpha">
                                 <li>
-                                    <div class="d-flex">
+                                    <div class="d-flex border-bottom">
                                         <h class="col-5">Tingkat/Kelas</h>: AB+
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="d-flex">
+                                    <div class="d-flex border-bottom">
                                         <h class="col-5">Program Studi</h>: AB+
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="d-flex">
+                                    <div class="d-flex border-bottom">
                                         <h class="col-5">Tanggal</h>: AB+
                                     </div>
                                 </li>
@@ -184,23 +185,28 @@
                     <h4>B. Tempat Tinggal</h4>
                     <ol style="line-height: 160%;">
                         <li>
-                            <div class="d-flex justify-content-between">
-                                <h class="col-5">Alamat</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:</span> <?= $siswa['siswa_alamat']; ?>
+                            <div class="d-flex justify-content-between border-bottom">
+                                <h class="col-5">Alamat</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span> <?= $siswa['siswa_alamat']; ?>
                             </div>
                         </li>
                         <li>
-                            <div class="d-flex">
-                                <h class="col-5">Nomor telepon</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:</span> &nbsp;(+62) <?= $siswa['siswa_telepon']; ?>
+                            <div class="d-flex justify-content-between border-bottom">
+                                <h class="col-5">Alamat Wali</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span> <?= $siswa['siswa_alamat_wali']; ?>
                             </div>
                         </li>
                         <li>
-                            <div class="d-flex">
-                                <h class="col-5">Status tinggal</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:</span> <?= $siswa['siswa_tinggal']; ?>
+                            <div class="d-flex border-bottom">
+                                <h class="col-5">Nomor telepon</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span> &nbsp;(+62) <?= $siswa['siswa_telepon']; ?>
                             </div>
                         </li>
                         <li>
-                            <div class="d-flex">
-                                <h class="col-5">Jarak tempat tinggal</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:</span> <?= $siswa['siswa_jarak']; ?> Km
+                            <div class="d-flex border-bottom">
+                                <h class="col-5">Status tinggal</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span> <?= $siswa['siswa_tinggal']; ?>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="d-flex border-bottom">
+                                <h class="col-5">Jarak tempat tinggal</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span> <?= $siswa['siswa_jarak']; ?> Km
                             </div>
                         </li>
                     </ol>
@@ -214,13 +220,13 @@
                     <h4>C. Data Kesehatan</h4>
                     <ol style="line-height: 160%;">
                         <li>
-                            <div class="d-flex">
-                                <h class="col-5">Golongan Darah</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:</span> AB+
+                            <div class="d-flex border-bottom">
+                                <h class="col-5">Golongan Darah</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>: &nbsp;</span> <?= $siswa['siswa_golongan_darah']; ?>
                             </div>
                         </li>
                         <li>
-                            <div class="d-flex">
-                                <h class="col-5">Penyakit</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:</span>
+                            <div class="d-flex border-bottom">
+                                <h class="col-5">Penyakit</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span>
                                 <ul>
                                     <?php if ($penyakit != null) : ?>
 
@@ -232,18 +238,18 @@
                             </div>
                         </li>
                         <li>
-                            <div class="d-flex">
-                                <h class="col-5">Kelainan Jasmani</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:</span> Letter O
+                            <div class="d-flex border-bottom">
+                                <h class="col-5">Kelainan Jasmani</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>: &nbsp;</span>  <?= $siswa['siswa_kelainan']; ?>
                             </div>
                         </li>
                         <li>
-                            <div class="d-flex">
-                                <h class="col-5">Tinggi</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:</span> 175 cm
+                            <div class="d-flex border-bottom">
+                                <h class="col-5">Tinggi</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>: &nbsp;</span>  <?= $siswa['siswa_tinggi']; ?> cm
                             </div>
                         </li>
                         <li>
-                            <div class="d-flex">
-                                <h class="col-5">Berat</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:</span> 90 Kg
+                            <div class="d-flex border-bottom">
+                                <h class="col-5">Berat</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>: &nbsp;</span>  <?= $siswa['siswa_berat']; ?> Kg
                             </div>
                         </li>
                     </ol>
@@ -257,23 +263,23 @@
                     <h4>F. Data Kegemaran</h4>
                     <ol>
                         <li>
-                            <div class="d-flex">
-                                <h class="col-5">Kesenian</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:</span> AB+
+                            <div class="d-flex border-bottom">
+                                <h class="col-5">Kesenian</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span> AB+
                             </div>
                         </li>
                         <li>
-                            <div class="d-flex">
-                                <h class="col-5">Olah raga</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:</span> AB+
+                            <div class="d-flex border-bottom">
+                                <h class="col-5">Olah raga</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span> AB+
                             </div>
                         </li>
                         <li>
-                            <div class="d-flex">
-                                <h class="col-5">Organisasi</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:</span> AB+
+                            <div class="d-flex border-bottom">
+                                <h class="col-5">Organisasi</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span> AB+
                             </div>
                         </li>
                         <li>
-                            <div class="d-flex">
-                                <h class="col-5">Lain-lain</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:</span> AB+
+                            <div class="d-flex border-bottom">
+                                <h class="col-5">Lain-lain</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span> AB+
                             </div>
                         </li>
                     </ol>
@@ -298,7 +304,22 @@
         </div>
     </div>
 </div>
-
+<script src="/assets/js/sweetalert2-all.js"></script>
 <script>
+    <?php if (session()->getFlashData('update')) : ?>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil diubah',
+            showConfirmButton: false,
+            timer: 950
+        })   
+        <?php elseif(session()->getFlashData('insert')): ?> 
+            Swal.fire({
+            icon: 'success',
+            title: 'Berhasil menambah <?= session()->getFlashData('data'); ?>',
+            showConfirmButton: false,
+            timer: 950
+        })   
+    <?php endif ?>
 </script>
 <?= $this->endSection() ?>
