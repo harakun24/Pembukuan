@@ -12,15 +12,5 @@ class penyakitModel extends Model
         'penyakit_siswa',
         'penyakit_nama',
     ];
-
-    // protected $useTimestamps = true;
-    // public function search($key)
-    // {
-    //     return $this->table('siswa')->like('siswa_nama', $key)
-    //     ->orLike('siswa_nis',$key)
-    //     ->orLike('siswa_nick',$key)
-    //     ->orLike('siswa_kelas',$key)
-    //     ->orLike('siswa_prodi',$key);
-    // }
     
 }

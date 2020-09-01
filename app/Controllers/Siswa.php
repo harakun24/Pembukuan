@@ -6,10 +6,12 @@ class Siswa extends BaseController
 {
     private $siswa;
     private $penyakit;
+    private $orangtua;
     function __construct()
     {
         $this->siswa = new \App\Models\siswaModel();
         $this->penyakit = new \App\Models\penyakitModel();
+        $this->orangtua = new \App\Models\orangtuaModel();
     }
     public function index()
     {
@@ -110,6 +112,7 @@ class Siswa extends BaseController
             $var = $this->request->getVar();
             $this->siswa->update($va['siswa_id'], [
                 'siswa_alamat' => $var['siswa_alamat'],
+                'siswa_alamat_wali' => $var['siswa_alamat_wali'],
                 'siswa_telepon' => $var['siswa_telepon'],
                 'siswa_tinggal' => $var['siswa_tinggal'],
                 'siswa_jarak' => $var['siswa_jarak'],
@@ -208,6 +211,16 @@ class Siswa extends BaseController
         ];
         return view('siswa/penyakit_siswa', $data);
     }
+    public function orangtua($nis)
+    {
+        $data = [
+            'siswa' => $this->siswa->where('siswa_nis', $nis)->first(),
+            'orangtua' => $this->orangtua->where('orangtua_siswa', $nis)->findAll(),
+            'ayah' => $this->orangtua->where(['orangtua_siswa'=>$nis,'orangtua_role'=>'ayah'])->first(),
+            'ibu' => $this->orangtua->where(['orangtua_siswa'=>$nis,'orangtua_role'=>'ibu'])->first(),
+        ];
+        return view('siswa/orangtua_siswa', $data);
+    }
     public function hapus($nis)
     {
         $val = $this->siswa->where('siswa_nis', $nis)->first();
@@ -219,7 +232,8 @@ class Siswa extends BaseController
     {
         $data = [
             'siswa' => $this->siswa->where('siswa_nis', $nis)->first(),
-            'penyakit' => $this->penyakit->where('penyakit_siswa', $nis)->findAll()
+            'penyakit' => $this->penyakit->where('penyakit_siswa', $nis)->findAll(),
+            'orangtua' => $this->orangtua->where('orangtua_siswa', $nis)->findAll()
 
         ];
         return $data['siswa'] == null ? redirect()->to('/siswa/') : view('siswa/detail_siswa', $data);

@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <table class="table table-bordered table-hover text-center">
-                    <thead class="text-center thead-dark">
+                    <thead class="text-center">
                         <tr>
                             <th class="d-none d-md-table-cell">No</th>
                             <th class="d-none d-sm-table-cell">Nis</th>

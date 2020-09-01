@@ -45,15 +45,9 @@
                         <div class="col-12 mt-4 mb-3 d-flex justify-content-between flex-wrap">
                             <div class="col-sm-4 col-12">
                                 <label for="notelp">Nomor Telepon</label>
-                                <div class="col-12 d-flex justify-content-between">
-
-                                    <label for="notelp" class="col-2 col-form-label">+62</label>
-                                    <div class="col-10 ml-1">
-                                        <input type="text" value="<?= old('siswa_telepon') ? old('siswa_telepon') : $siswa['siswa_telepon']; ?>" class="form-control <?= $val->hasError('siswa_telepon') ? 'is-invalid' : ''; ?>" placeholder="Ex: 821345xxx" name="siswa_telepon" id="notelp" required>
-                                        <div class="invalid-feedback">
-                                            <?= $val->getError('siswa_telepon'); ?>
-                                        </div>
-                                    </div>
+                                <input type="text" value="<?= old('siswa_telepon') ? old('siswa_telepon') : $siswa['siswa_telepon']; ?>" class="form-control <?= $val->hasError('siswa_telepon') ? 'is-invalid' : ''; ?>" placeholder="Ex: 0821345xxx" name="siswa_telepon" id="notelp" required>
+                                <div class="invalid-feedback">
+                                    <?= $val->getError('siswa_telepon'); ?>
                                 </div>
                             </div>
                             <div class="col-sm-3 col-12">
