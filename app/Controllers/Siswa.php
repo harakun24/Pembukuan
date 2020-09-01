@@ -7,11 +7,13 @@ class Siswa extends BaseController
     private $siswa;
     private $penyakit;
     private $orangtua;
+    private $kegemaran;
     function __construct()
     {
         $this->siswa = new \App\Models\siswaModel();
         $this->penyakit = new \App\Models\penyakitModel();
         $this->orangtua = new \App\Models\orangtuaModel();
+        $this->kegemaran = new \App\Models\kegemaranModel();
     }
     public function index()
     {
@@ -221,6 +223,17 @@ class Siswa extends BaseController
         ];
         return view('siswa/orangtua_siswa', $data);
     }
+    public function kegemaran($nis)
+    {
+        $data = [
+            'siswa' => $this->siswa->where('siswa_nis', $nis)->first(),
+            'kesenian' => $this->kegemaran->where(['kegemaran_siswa'=>$nis,'kegemaran_role'=>'kesenian'])->findAll(),
+            'olahraga' => $this->kegemaran->where(['kegemaran_siswa'=>$nis,'kegemaran_role'=>'olahraga'])->findAll(),
+            'organisasi' => $this->kegemaran->where(['kegemaran_siswa'=>$nis,'kegemaran_role'=>'organisasi'])->findAll(),
+            'lain_lain' => $this->kegemaran->where(['kegemaran_siswa'=>$nis,'kegemaran_role'=>'lain-lain'])->findAll(),
+        ];
+        return view('siswa/kegemaran_siswa', $data);
+    }
     public function hapus($nis)
     {
         $val = $this->siswa->where('siswa_nis', $nis)->first();
@@ -233,7 +246,11 @@ class Siswa extends BaseController
         $data = [
             'siswa' => $this->siswa->where('siswa_nis', $nis)->first(),
             'penyakit' => $this->penyakit->where('penyakit_siswa', $nis)->findAll(),
-            'orangtua' => $this->orangtua->where('orangtua_siswa', $nis)->findAll()
+            'orangtua' => $this->orangtua->where('orangtua_siswa', $nis)->findAll(),
+            'kesenian' => $this->kegemaran->where(['kegemaran_siswa'=>$nis,'kegemaran_role'=>'kesenian'])->findAll(),
+            'olahraga' => $this->kegemaran->where(['kegemaran_siswa'=>$nis,'kegemaran_role'=>'olahraga'])->findAll(),
+            'organisasi' => $this->kegemaran->where(['kegemaran_siswa'=>$nis,'kegemaran_role'=>'organisasi'])->findAll(),
+            'lain_lain' => $this->kegemaran->where(['kegemaran_siswa'=>$nis,'kegemaran_role'=>'lain-lain'])->findAll(),
 
         ];
         return $data['siswa'] == null ? redirect()->to('/siswa/') : view('siswa/detail_siswa', $data);

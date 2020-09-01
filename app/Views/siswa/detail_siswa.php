@@ -264,32 +264,44 @@
             </div>
             <div class="card col-12 mb-3">
                 <div class="card-body">
-                    <a href="#" class="position-absolute" style="right:4%;top:8px;cursor:pointer;font-size:120%">
+                    <a href="<?= route_to('siswa_kegemaran',$siswa['siswa_nis']); ?>" class="position-absolute" style="right:4%;top:8px;cursor:pointer;font-size:120%">
                         <i class="fa fa-cog text-secondary"></i>
                     </a>
                     <h4>F. Data Kegemaran</h4>
-                    <ol>
-                        <li>
-                            <div class="d-flex border-bottom">
-                                <h class="col-5">Kesenian</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span> AB+
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex border-bottom">
-                                <h class="col-5">Olah raga</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span> AB+
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex border-bottom">
-                                <h class="col-5">Organisasi</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span> AB+
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex border-bottom">
-                                <h class="col-5">Lain-lain</h>&nbsp;&nbsp;&nbsp;&nbsp;<span>:&nbsp;</span> AB+
-                            </div>
-                        </li>
-                    </ol>
+                    <table class="table table-bordered table-hover mt-4">
+                        <tr>
+                            <th>Kesenian</th>
+                            <td>
+                                <?php foreach($kesenian as $k): ?> 
+                                     <?= $k['kegemaran_nama'].', '; ?>
+                                <?php endforeach ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Olahraga</th>
+                            <td>
+                                <?php foreach($olahraga as $k): ?> 
+                                     <?= $k['kegemaran_nama'].', '; ?>
+                                <?php endforeach ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Organisasi</th>
+                            <td>
+                                <?php foreach($organisasi as $k): ?> 
+                                     <?= $k['kegemaran_nama'].', '; ?>
+                                <?php endforeach ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Lain_lain</th>
+                            <td>
+                                <?php foreach($lain_lain as $k): ?> 
+                                     <?= $k['kegemaran_nama'].', '; ?>
+                                <?php endforeach ?>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
             <div class="card col-12 mb-3">

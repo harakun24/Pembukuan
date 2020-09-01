@@ -69,6 +69,13 @@
             showConfirmButton: false,
             timer: 950
         })
+    <?php elseif (session()->getFlashData('update')) : ?>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil diubah',
+            showConfirmButton: false,
+            timer: 950
+        })
     <?php endif ?>
 
     function tambah() {

@@ -56,6 +56,7 @@ $routes->group('siswa', function ($routes) {
 	$routes->add('(:num)/detail/pendidikan', 'Siswa::pendidikan/$1', ['as' => 'siswa_pendidikan']);
 	$routes->post('(:num)/detail/pendidikan/simpan', 'Siswa::simpan_pendidikan/$1', ['as' => 'siswa_pendidikan_save']);
 	$routes->add('(:num)/detail/orangtua', 'Siswa::orangtua/$1', ['as' => 'siswa_orangtua']);
+	$routes->add('(:num)/detail/kegemaran', 'Siswa::kegemaran/$1', ['as' => 'siswa_kegemaran']);
 });
 
 $routes->group('penyakit', function ($routes) {
@@ -68,6 +69,12 @@ $routes->group('orangtua', function ($routes) {
 	$routes->add('tambah/(:num)', 'Orangtua::simpan/$1', ['as' => 'orangtua_save']);
 	$routes->add('perbarui/(:num)', 'Orangtua::perbarui/$1', ['as' => 'orangtua_update']);
 	$routes->add('hapus/(:num)', 'Orangtua::hapus/$1', ['as' => 'orangtua_hapus']);
+});
+$routes->group('kegemaran', function ($routes) {
+	$routes->add('(:num)', 'Kegemaran::index/$1', ['as' => 'kegemaran_index']);
+	$routes->add('tambah/(:num)', 'Kegemaran::simpan/$1', ['as' => 'kegemaran_save']);
+	$routes->add('perbarui/(:num)', 'Kegemaran::perbarui/$1', ['as' => 'kegemaran_update']);
+	$routes->add('hapus/(:num)', 'Kegemaran::hapus/$1', ['as' => 'kegemaran_hapus']);
 });
 
 
