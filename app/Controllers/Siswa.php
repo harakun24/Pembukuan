@@ -180,6 +180,18 @@ class Siswa extends BaseController
         session()->setFlashData('data', $va['siswa_nama']);
         return redirect()->to('/siswa/' . $nis . '/detail');
     }
+    public function simpan_tracker($nis)
+    {
+        $va = $this->siswa->where('siswa_nis', $nis)->first();
+        $var = $this->request->getVar();
+        $this->siswa->update($va['siswa_id'], [
+            'siswa_melanjutkan' => $var['siswa_melanjutkan'],
+        ]);
+        // dd($var);
+        session()->setFlashData('update', true);
+        session()->setFlashData('data', $va['siswa_nama']);
+        return redirect()->to('/siswa/' . $nis . '/detail');
+    }
     public function perbarui()
     {
         $var = $this->request->getVar();
@@ -287,6 +299,8 @@ class Siswa extends BaseController
             'organisasi' => $this->kegemaran->where(['kegemaran_siswa'=>$nis,'kegemaran_role'=>'organisasi'])->findAll(),
             'lain_lain' => $this->kegemaran->where(['kegemaran_siswa'=>$nis,'kegemaran_role'=>'lain-lain'])->findAll(),
             'beasiswa' => $this->beasiswa->where(['beasiswa_siswa'=>$nis])->findAll(),
+            'tracker' => $this->tracker->where(['tracker_siswa'=>$nis])->findAll(),
+
         ];
         return $data['siswa'] == null ? redirect()->to('/siswa/') : view('siswa/detail_siswa', $data);
     }

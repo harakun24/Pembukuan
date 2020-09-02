@@ -20,13 +20,12 @@ class Tracker extends BaseController
         $var = $this->request->getVar();
         $this->tracker->save([
             'tracker_siswa' => $nis,
-            'tracker_tahun' => $var['tracker_tahun'],
-            'tracker_kelas' => $var['tracker_kelas'],
-            'tracker_dari' => $var['tracker_dari'],
+            'tracker_tanggal' => $var['tracker_tanggal'],
+            'tracker_nama' => $var['tracker_nama'],
+            'tracker_gaji' => $var['tracker_gaji'],
         ]);
-        // return json_encode(['status' => 200]);
         session()->setFlashData('insert', true);
-        return redirect()->to('/siswa/' . $nis . '/detail/perkembangan');
+        return redirect()->to('/siswa/' . $nis . '/detail/tracker');
     }
     public function perbarui($id)
     {
@@ -34,13 +33,13 @@ class Tracker extends BaseController
         $this->tracker->save([
             'tracker_id' => $id,
             'tracker_siswa' => $var['tracker_siswa'],
-            'tracker_tahun' => $var['tracker_tahun'],
-            'tracker_kelas' => $var['tracker_kelas'],
-            'tracker_dari' => $var['tracker_dari'],
+            'tracker_tanggal' => $var['tracker_tanggal'],
+            'tracker_nama' => $var['tracker_nama'],
+            'tracker_gaji' => $var['tracker_gaji'],
         ]);
         // return json_encode(['status' => 200]);
         session()->setFlashData('update', true);
-        return redirect()->to('/siswa/' . $var['tracker_siswa'] . '/detail/perkembangan');
+        return redirect()->to('/siswa/' . $var['tracker_siswa'] . '/detail/tracker');
     }
     public function hapus($id)
     {

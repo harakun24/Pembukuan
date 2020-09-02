@@ -356,7 +356,7 @@
                                 <tr>
                                     <th>Tamat belajar</th>
                                     <td>
-                                       tahun <?= $siswa['siswa_tamat_tahun']; ?>
+                                        tahun <?= $siswa['siswa_tamat_tahun']; ?>
                                     </td>
                                 </tr>
                                 <tr>
@@ -372,10 +372,42 @@
             </div>
             <div class="card col-12 mb-3">
                 <div class="card-body">
-                    <a href="<?= route_to('siswa_tracker',$siswa['siswa_nis']); ?>" class="position-absolute btn btn-sm btn-outline-success" style="right:4%;top:15px;cursor:pointer;">
+                    <a href="<?= route_to('siswa_tracker', $siswa['siswa_nis']); ?>" class="position-absolute btn btn-sm btn-outline-success" style="right:4%;top:15px;cursor:pointer;">
                         atur <i class="fa fa-pen"></i>
                     </a>
                     <h4>H. Data Setelah Selesai</h4>
+                    <ul style="list-style:none;">
+                        <li>
+                        <table class="table table-bordered table-hover mt-4">
+                                <tr>
+                                    <th>Melanjutkan di</th>
+                                    <td>
+                                        <?= $siswa['siswa_melanjutkan']; ?>
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        <li>Bekerja <br>
+                            <table class="table table-bordered text-center table-hover mt-4">
+                                <thead>
+                                    <tr>
+                                        <th>Tanggal mulai</th>
+                                        <th>Perusahaan/lembaga/lain-lain</th>
+                                        <th>Penghasilan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($tracker as $k) : ?>
+                                        <tr>
+                                            <td><?= $k['tracker_tanggal']; ?></td>
+                                            <td><?= $k['tracker_nama']; ?></td>
+                                            <td><?= $k['tracker_gaji']; ?></td>
+                                        </tr>
+                                    <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

@@ -25,7 +25,7 @@
                     <label>Penyakit </label> <a onclick="tambah()" class="ml-2 btn btn-success btn-sm p-1 px-2" style="font-size: 60%;"><i class="fa fa-plus"></i></a>
                     <div class="row mt-2 p-2 d-flex flex-column">
                         <?php if ($penyakit != null) : ?>
-                            
+
                             <?php
                             $i = 1;
                             ?>
@@ -40,7 +40,7 @@
                                 <tbody>
 
                                     <?php foreach ($penyakit as $p) : ?>
-                                        
+
                                         <tr>
                                             <td class="col-2"><?= $i++; ?></td>
                                             <td><?= $p['penyakit_nama']; ?></td>
@@ -101,6 +101,22 @@
 </div>
 <script src="/assets/js/sweetalert2-all.js"></script>
 <script>
+    <?php if (session()->getFlashData('insert')) : ?>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil menambah',
+            showConfirmButton: false,
+            timer: 950
+        })
+    <?php elseif (session()->getFlashData('update')) : ?>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil diubah',
+            showConfirmButton: false,
+            timer: 950
+        })
+    <?php endif ?>
+
     function tambah() {
 
         var inputValue;

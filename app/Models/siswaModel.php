@@ -47,6 +47,7 @@ class siswaModel extends Model
         'siswa_alasan_meninggalkan',
         'siswa_tamat_tahun',
         'siswa_tamat_sttb',
+        'siswa_melanjutkan',
     ];
 
     // protected $useTimestamps = true;
