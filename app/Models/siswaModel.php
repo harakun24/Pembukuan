@@ -43,6 +43,10 @@ class siswaModel extends Model
         'siswa_kelas',
         'siswa_prodi',
         'siswa_tanggal_diterima',
+        'siswa_tanggal_meninggalkan',
+        'siswa_alasan_meninggalkan',
+        'siswa_tamat_tahun',
+        'siswa_tamat_sttb',
     ];
 
     // protected $useTimestamps = true;

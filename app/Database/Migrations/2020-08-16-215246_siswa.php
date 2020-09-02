@@ -181,6 +181,11 @@ class Siswa extends Migration
 				'constraint' 		=> 50,
 				'null'           	=> true
 			],
+			'siswa_melanjutkan'				=> [
+				'type' 				=> 'varchar',
+				'constraint' 		=> 255,
+				'null'           	=> true
+			],
 			'created_at'					=> [
 				'type' 				=> 'datetime',
 				'null'           	=> true

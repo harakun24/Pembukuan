@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary p-3">
-    <a class="navbar-brand" href="#"><i class="fa fa-book-open"></i> Pembukuan</a>
+    <a class="navbar-brand" href="<?= route_to('siswa_list'); ?>"><i class="fa fa-book-open"></i> Pembukuan</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,7 +9,16 @@
                 <a class="nav-link" href="#">Siswa <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Wali</a>
+                <a class="nav-link" href="#">Orang tua</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Penyakit</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Alamat</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Beasiswa</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Tracker</a>

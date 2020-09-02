@@ -8,12 +8,16 @@ class Siswa extends BaseController
     private $penyakit;
     private $orangtua;
     private $kegemaran;
+    private $beasiswa;
+    private $tracker;
     function __construct()
     {
         $this->siswa = new \App\Models\siswaModel();
         $this->penyakit = new \App\Models\penyakitModel();
         $this->orangtua = new \App\Models\orangtuaModel();
         $this->kegemaran = new \App\Models\kegemaranModel();
+        $this->beasiswa = new \App\Models\beasiswaModel();
+        $this->tracker = new \App\Models\trackerModel();
     }
     public function index()
     {
@@ -161,6 +165,21 @@ class Siswa extends BaseController
         session()->setFlashData('data', $va['siswa_nama']);
         return redirect()->to('/siswa/' . $nis . '/detail');
     }
+    public function simpan_perkembangan($nis)
+    {
+        $va = $this->siswa->where('siswa_nis', $nis)->first();
+        $var = $this->request->getVar();
+        $this->siswa->update($va['siswa_id'], [
+            'siswa_tanggal_meninggalkan' => $var['siswa_tanggal_meninggalkan'],
+            'siswa_alasan_meninggalkan' => $var['siswa_alasan_meninggalkan'],
+            'siswa_tamat_tahun' => $var['siswa_tamat_tahun'],
+            'siswa_tamat_sttb' => $var['siswa_tamat_sttb'],
+        ]);
+        // dd($var);
+        session()->setFlashData('update', true);
+        session()->setFlashData('data', $va['siswa_nama']);
+        return redirect()->to('/siswa/' . $nis . '/detail');
+    }
     public function perbarui()
     {
         $var = $this->request->getVar();
@@ -234,6 +253,22 @@ class Siswa extends BaseController
         ];
         return view('siswa/kegemaran_siswa', $data);
     }
+    public function perkembangan($nis)
+    {
+        $data = [
+            'siswa' => $this->siswa->where('siswa_nis', $nis)->first(),
+            'beasiswa' => $this->beasiswa->where(['beasiswa_siswa'=>$nis])->findAll(),
+        ];
+        return view('siswa/perkembangan_siswa', $data);
+    }
+    public function tracker($nis)
+    {
+        $data = [
+            'siswa' => $this->siswa->where('siswa_nis', $nis)->first(),
+            'tracker' => $this->tracker->where(['tracker_siswa'=>$nis])->findAll(),
+        ];
+        return view('siswa/tracker_siswa', $data);
+    }
     public function hapus($nis)
     {
         $val = $this->siswa->where('siswa_nis', $nis)->first();
@@ -251,7 +286,7 @@ class Siswa extends BaseController
             'olahraga' => $this->kegemaran->where(['kegemaran_siswa'=>$nis,'kegemaran_role'=>'olahraga'])->findAll(),
             'organisasi' => $this->kegemaran->where(['kegemaran_siswa'=>$nis,'kegemaran_role'=>'organisasi'])->findAll(),
             'lain_lain' => $this->kegemaran->where(['kegemaran_siswa'=>$nis,'kegemaran_role'=>'lain-lain'])->findAll(),
-
+            'beasiswa' => $this->beasiswa->where(['beasiswa_siswa'=>$nis])->findAll(),
         ];
         return $data['siswa'] == null ? redirect()->to('/siswa/') : view('siswa/detail_siswa', $data);
     }

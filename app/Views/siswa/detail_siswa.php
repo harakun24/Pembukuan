@@ -18,15 +18,17 @@
                 <li class="breadcrumb-item"><a href="<?= route_to('siswa_list'); ?>">Pembukuan</a></li>
                 <li class="breadcrumb-item"><a href="<?= route_to('siswa_list'); ?>">Siswa</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><?= $siswa['siswa_nama']; ?></li>
+                <li class="breadcrumb-item"><button class="btn btn-sm btn-outline-success">unduh &nbsp;<i class="fa fa-cloud-download-alt"></i></button></li>
             </ol>
+
         </nav>
     </div>
     <div class="col-12 d-flex align-items-start justify-content-center flex-wrap">
         <div class="col-lg-6 col-sm-12 px-3 d-flex justify-content-center flex-wrap">
             <div class="card col-12 mb-3">
                 <div class="card-body position-relative">
-                    <a href="<?= route_to('siswa_edit', $siswa['siswa_nis']); ?>" class="position-absolute" style="right:4%;top:8px;cursor:pointer;font-size:130%">
-                        <i class="fa fa-cog text-secondary"></i>
+                    <a href="<?= route_to('siswa_edit', $siswa['siswa_nis']); ?>" class="position-absolute btn btn-sm btn-outline-success" style="right:4%;top:15px;cursor:pointer;">
+                        atur <i class="fa fa-pen"></i>
                     </a>
                     <h4>A. Data Pribadi</h4>
                     <table class="table table-bordered table-hover mt-4">
@@ -83,8 +85,8 @@
             </div>
             <div class="card col-12 mb-3">
                 <div class="card-body">
-                    <a href="<?= route_to('siswa_pendidikan', $siswa['siswa_nis']); ?>" class="position-absolute" style="right:4%;top:8px;cursor:pointer;font-size:120%">
-                        <i class="fa fa-cog text-secondary"></i>
+                    <a href="<?= route_to('siswa_pendidikan', $siswa['siswa_nis']); ?>" class="position-absolute btn btn-sm btn-outline-success" style="right:4%;top:15px;cursor:pointer;">
+                        atur <i class="fa fa-pen"></i>
                     </a>
                     <h4>D. Data Pendidikan</h4>
 
@@ -141,8 +143,8 @@
             </div>
             <div class="card col-12 mb-3">
                 <div class="card-body">
-                    <a href="<?= route_to('siswa_orangtua', $siswa['siswa_nis']); ?>" class="position-absolute" style="right:4%;top:8px;cursor:pointer;font-size:120%">
-                        <i class="fa fa-cog text-secondary"></i>
+                    <a href="<?= route_to('siswa_orangtua', $siswa['siswa_nis']); ?>" class="position-absolute btn btn-sm btn-outline-success" style="right:4%;top:15px;cursor:pointer;">
+                        atur <i class="fa fa-pen"></i>
                     </a>
                     <h4 class="mb-4">E. Data Orang Tua</h4>
                     <?php foreach ($orangtua as $o) : ?>
@@ -198,8 +200,8 @@
         <div class="col-lg-6 px-3 col-sm-12 d-flex justify-content-center flex-wrap">
             <div class="card col-12 mb-3">
                 <div class="card-body">
-                    <a href="<?= route_to('siswa_alamat', $siswa['siswa_nis']); ?>" class="position-absolute" style="right:4%;top:8px;cursor:pointer;font-size:120%">
-                        <i class="fa fa-cog text-secondary"></i>
+                    <a href="<?= route_to('siswa_alamat', $siswa['siswa_nis']); ?>" class="position-absolute btn btn-sm btn-outline-success" style="right:4%;top:15px;cursor:pointer;">
+                        atur <i class="fa fa-pen"></i>
                     </a>
                     <h4>B. Tempat Tinggal</h4>
                     <table class="table table-bordered table-hover mt-4">
@@ -228,8 +230,8 @@
             </div>
             <div class="card col-12 mb-3">
                 <div class="card-body">
-                    <a href="<?= route_to('siswa_penyakit', $siswa['siswa_nis']); ?>" class="position-absolute" style="right:4%;top:8px;cursor:pointer;font-size:120%">
-                        <i class="fa fa-cog text-secondary"></i>
+                    <a href="<?= route_to('siswa_penyakit', $siswa['siswa_nis']); ?>" class="position-absolute btn btn-sm btn-outline-success" style="right:4%;top:15px;cursor:pointer;">
+                        atur <i class="fa fa-pen"></i>
                     </a>
                     <h4>C. Data Kesehatan</h4>
                     <table class="table table-bordered table-hover mt-4">
@@ -242,7 +244,7 @@
                             <td>
                                 <?php if ($penyakit != null) : ?>
                                     <?php foreach ($penyakit as $p) : ?>
-                                        <?= $p['penyakit_nama'].', '; ?>
+                                        <?= $p['penyakit_nama'] . ', '; ?>
                                     <?php endforeach ?>
                                 <?php endif ?>
                             </td>
@@ -264,40 +266,40 @@
             </div>
             <div class="card col-12 mb-3">
                 <div class="card-body">
-                    <a href="<?= route_to('siswa_kegemaran',$siswa['siswa_nis']); ?>" class="position-absolute" style="right:4%;top:8px;cursor:pointer;font-size:120%">
-                        <i class="fa fa-cog text-secondary"></i>
+                    <a href="<?= route_to('siswa_kegemaran', $siswa['siswa_nis']); ?>" class="position-absolute btn btn-sm btn-outline-success" style="right:4%;top:15px;cursor:pointer;">
+                        atur <i class="fa fa-pen"></i>
                     </a>
                     <h4>F. Data Kegemaran</h4>
                     <table class="table table-bordered table-hover mt-4">
                         <tr>
                             <th>Kesenian</th>
                             <td>
-                                <?php foreach($kesenian as $k): ?> 
-                                     <?= $k['kegemaran_nama'].', '; ?>
+                                <?php foreach ($kesenian as $k) : ?>
+                                    <?= $k['kegemaran_nama'] . ', '; ?>
                                 <?php endforeach ?>
                             </td>
                         </tr>
                         <tr>
                             <th>Olahraga</th>
                             <td>
-                                <?php foreach($olahraga as $k): ?> 
-                                     <?= $k['kegemaran_nama'].', '; ?>
+                                <?php foreach ($olahraga as $k) : ?>
+                                    <?= $k['kegemaran_nama'] . ', '; ?>
                                 <?php endforeach ?>
                             </td>
                         </tr>
                         <tr>
                             <th>Organisasi</th>
                             <td>
-                                <?php foreach($organisasi as $k): ?> 
-                                     <?= $k['kegemaran_nama'].', '; ?>
+                                <?php foreach ($organisasi as $k) : ?>
+                                    <?= $k['kegemaran_nama'] . ', '; ?>
                                 <?php endforeach ?>
                             </td>
                         </tr>
                         <tr>
                             <th>Lain_lain</th>
                             <td>
-                                <?php foreach($lain_lain as $k): ?> 
-                                     <?= $k['kegemaran_nama'].', '; ?>
+                                <?php foreach ($lain_lain as $k) : ?>
+                                    <?= $k['kegemaran_nama'] . ', '; ?>
                                 <?php endforeach ?>
                             </td>
                         </tr>
@@ -306,16 +308,72 @@
             </div>
             <div class="card col-12 mb-3">
                 <div class="card-body">
-                    <a href="#" class="position-absolute" style="right:4%;top:8px;cursor:pointer;font-size:120%">
-                        <i class="fa fa-cog text-secondary"></i>
+                    <a href="<?= route_to('siswa_perkembangan', $siswa['siswa_nis']); ?>" class="position-absolute btn btn-sm btn-outline-success" style="right:4%;top:15px;cursor:pointer;">
+                        atur <i class="fa fa-pen"></i>
                     </a>
-                    <h4>G. Data Perkembangan</h4>
+                    <h4 class="mb-3">G. Data Perkembangan</h4>
+                    <ol>
+                        <li>Beasiswa <br>
+                            <table class="table table-bordered text-center table-hover mt-4">
+                                <thead>
+                                    <tr>
+                                        <th>Tahun</th>
+                                        <th>Kelas</th>
+                                        <th>Dari</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($beasiswa as $k) : ?>
+                                        <tr>
+                                            <td class="col-2"><?= $k['beasiswa_tahun']; ?></td>
+                                            <td class="col-2"><?= $k['beasiswa_kelas']; ?></td>
+                                            <td><?= $k['beasiswa_dari']; ?></td>
+                                        </tr>
+                                    <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </li>
+                        <li>
+                            Meninggalkan Madrasah <br>
+                            <table class="table table-bordered table-hover mt-4">
+                                <tr>
+                                    <th>Tanggal meninggalkan</th>
+                                    <td>
+                                        <?= $siswa['siswa_tanggal_meninggalkan']; ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Alasan Meninggalkan</th>
+                                    <td>
+                                        <?= $siswa['siswa_alasan_meninggalkan']; ?>
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        <li>
+                            Akhir Pendidikan <br>
+                            <table class="table table-bordered table-hover mt-4">
+                                <tr>
+                                    <th>Tamat belajar</th>
+                                    <td>
+                                       tahun <?= $siswa['siswa_tamat_tahun']; ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>STTB Nomor</th>
+                                    <td>
+                                        <?= $siswa['siswa_tamat_sttb']; ?>
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                    </ol>
                 </div>
             </div>
             <div class="card col-12 mb-3">
                 <div class="card-body">
-                    <a href="#" class="position-absolute" style="right:4%;top:8px;cursor:pointer;font-size:120%">
-                        <i class="fa fa-cog text-secondary"></i>
+                    <a href="<?= route_to('siswa_tracker',$siswa['siswa_nis']); ?>" class="position-absolute btn btn-sm btn-outline-success" style="right:4%;top:15px;cursor:pointer;">
+                        atur <i class="fa fa-pen"></i>
                     </a>
                     <h4>H. Data Setelah Selesai</h4>
                 </div>

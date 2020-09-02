@@ -51,12 +51,16 @@ $routes->group('siswa', function ($routes) {
 	$routes->add('(:num)/detail/pribadi', 'Siswa::ubah/$1', ['as' => 'siswa_edit']);
 	$routes->add('(:num)/detail/alamat', 'Siswa::alamat/$1', ['as' => 'siswa_alamat']);
 	$routes->post('(:num)/detail/alamat/simpan', 'Siswa::simpan_alamat/$1', ['as' => 'siswa_alamat_save']);
-	$routes->add('(:num)/detail/penyakit', 'Siswa::penyakit/$1', ['as' => 'siswa_penyakit']);
+	$routes->add('(:num)/detail/kesehatan', 'Siswa::penyakit/$1', ['as' => 'siswa_penyakit']);
 	$routes->post('(:num)/detail/penyakit/simpan', 'Siswa::simpan_penyakit/$1', ['as' => 'siswa_penyakit_save']);
 	$routes->add('(:num)/detail/pendidikan', 'Siswa::pendidikan/$1', ['as' => 'siswa_pendidikan']);
 	$routes->post('(:num)/detail/pendidikan/simpan', 'Siswa::simpan_pendidikan/$1', ['as' => 'siswa_pendidikan_save']);
 	$routes->add('(:num)/detail/orangtua', 'Siswa::orangtua/$1', ['as' => 'siswa_orangtua']);
 	$routes->add('(:num)/detail/kegemaran', 'Siswa::kegemaran/$1', ['as' => 'siswa_kegemaran']);
+	$routes->add('(:num)/detail/perkembangan', 'Siswa::perkembangan/$1', ['as' => 'siswa_perkembangan']);
+	$routes->post('(:num)/detail/perkembangan/simpan', 'Siswa::simpan_perkembangan/$1', ['as' => 'siswa_perkembangan_save']);
+	$routes->add('(:num)/detail/tracker', 'Siswa::tracker/$1', ['as' => 'siswa_tracker']);
+	$routes->post('(:num)/detail/tracker/simpan', 'Siswa::simpan_tracker/$1', ['as' => 'siswa_tracker_save']);
 });
 
 $routes->group('penyakit', function ($routes) {
@@ -75,6 +79,18 @@ $routes->group('kegemaran', function ($routes) {
 	$routes->add('tambah/(:num)', 'Kegemaran::simpan/$1', ['as' => 'kegemaran_save']);
 	$routes->add('perbarui/(:num)', 'Kegemaran::perbarui/$1', ['as' => 'kegemaran_update']);
 	$routes->add('hapus/(:num)', 'Kegemaran::hapus/$1', ['as' => 'kegemaran_hapus']);
+});
+$routes->group('beasiswa', function ($routes) {
+	$routes->add('(:num)', 'Beasiswa::index/$1', ['as' => 'beasiswa_index']);
+	$routes->add('tambah/(:num)', 'Beasiswa::simpan/$1', ['as' => 'beasiswa_save']);
+	$routes->add('perbarui/(:num)', 'Beasiswa::perbarui/$1', ['as' => 'beasiswa_update']);
+	$routes->add('hapus/(:num)', 'Beasiswa::hapus/$1', ['as' => 'beasiswa_hapus']);
+});
+$routes->group('tracker', function ($routes) {
+	$routes->add('(:num)', 'Tracker::index/$1', ['as' => 'tracker_index']);
+	$routes->add('tambah/(:num)', 'Tracker::simpan/$1', ['as' => 'tracker_save']);
+	$routes->add('perbarui/(:num)', 'Tracker::perbarui/$1', ['as' => 'tracker_update']);
+	$routes->add('hapus/(:num)', 'Tracker::hapus/$1', ['as' => 'tracker_hapus']);
 });
 
 
