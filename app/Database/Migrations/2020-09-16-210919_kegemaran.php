@@ -2,32 +2,37 @@
 
 use CodeIgniter\Database\Migration;
 
-class Penyakit extends Migration
+class Kegemaran extends Migration
 {
 	public function up()
 	{
 		$this->forge->addField([
-			'id'	 				=> [
+			'kegemaran_id'			=> [
 				'type' 				=> 'int',
 				'constraint' 		=> 11,
 				'auto_increment' 	=> true
 			],
-			'penyakit_siswa'		=> [
+			'kegemaran_nama'		=> [
+				'type' 				=> 'varchar',
+				'constraint' 		=> 255,
+			],
+			'kegemaran_siswa'		=> [
 				'type' 				=> 'int'
 			],
-			'penyakit_nama'			=> [
+			'kegemaran_role'		=> [
 				'type' 				=> 'varchar',
-				'constraint' 		=> 255
-			]
+				'constraint' 		=> 20
+			],
 		]);
-		$this->forge->addKey('id', true);
-		$this->forge->createTable('penyakit');
+		$this->forge->addKey('kegemaran_id', true);
+		$this->forge->createTable('kegemaran');
 	}
 
 	//--------------------------------------------------------------------
 
 	public function down()
 	{
-		$this->forge->dropTable('penyakit');
+		//
+		$this->forge->dropTable('kegemaran');
 	}
 }

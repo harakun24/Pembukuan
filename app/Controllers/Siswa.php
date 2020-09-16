@@ -50,10 +50,52 @@ class Siswa extends BaseController
         ];
         return $data['siswa'] == null ? redirect()->to('/siswa/') : view('siswa/edit_siswa', $data);
     }
-    public function tes($id)
+    public function tes()
     {
-        $faker = \Faker\Factory::create('id_ID');
-        echo $faker->address;
+        $data['siswa'] = $this->siswa->findAll();
+        $length = 0;
+        foreach ($data['siswa'] as $siswa) {
+            $length++;
+        }
+        $j=0;
+        for ($i = 0; $i < $length; $i++) {
+            $temp = $this->penyakit->where('penyakit_siswa', $data['siswa'][$i]['siswa_nis'])->findAll();
+            $data['siswa'][$i]['penyakit'] = "";
+            foreach ($temp as $t) {
+                $j=$i;
+                $data['siswa'][$i]['penyakit'] .= $t['penyakit_nama'].', ';
+            }
+        }
+        for ($i = 0; $i < $length; $i++) {
+            $kesenian = $this->kegemaran->where(['kegemaran_siswa'=> $data['siswa'][$i]['siswa_nis'],'kegemaran_role'=>'kesenian'])->findAll();
+            $olahraga = $this->kegemaran->where(['kegemaran_siswa'=> $data['siswa'][$i]['siswa_nis'],'kegemaran_role'=>'olahraga'])->findAll();
+            $organisasi = $this->kegemaran->where(['kegemaran_siswa'=> $data['siswa'][$i]['siswa_nis'],'kegemaran_role'=>'organisasi'])->findAll();
+            $lain_lain = $this->kegemaran->where(['kegemaran_siswa'=> $data['siswa'][$i]['siswa_nis'],'kegemaran_role'=>'lain-lain'])->findAll();
+            $data['siswa'][$i]['kesenian'] = "";
+            $data['siswa'][$i]['olahraga'] = "";
+            $data['siswa'][$i]['organisasi'] = "";
+            $data['siswa'][$i]['lain_lain'] = "";
+            foreach ($kesenian as $t) {
+                $data['siswa'][$i]['kesenian'] .= $t['kegemaran_nama'].', ';
+            }
+            foreach ($olahraga as $t) {
+                $data['siswa'][$i]['olahraga'] .= $t['kegemaran_nama'].', ';
+            }
+            foreach ($organisasi as $t) {
+                $data['siswa'][$i]['organisasi'] .= $t['kegemaran_nama'].', ';
+            }
+            foreach ($lain_lain as $t) {
+                $data['siswa'][$i]['lain_lain'] .= $t['kegemaran_nama'].', ';
+            }
+        }
+        for ($i = 0; $i < $length; $i++) {
+            $data['siswa'][$i]['wali'] ="";
+            $temp = $this->orangtua->where('orangtua_siswa', $data['siswa'][$i]['siswa_nis'])->findAll();
+            foreach ($temp as $t) {
+                $data['siswa'][$i]['wali'] .= $t['orangtua_nama'].'('.$t['orangtua_role'].') , ';
+            }
+        }
+        echo json_encode(['status'=>$data['siswa']]);
     }
     public function simpan()
     {
@@ -92,6 +134,9 @@ class Siswa extends BaseController
             session()->setFlashData('data', $var['siswa_nama']);
             return redirect()->to('/siswa/' . $var['siswa_nis'] . '/detail');
         }
+    }
+    public function unduh(){
+        return view('unduh.php');
     }
     public function simpan_alamat($nis)
     {
@@ -249,8 +294,8 @@ class Siswa extends BaseController
         $data = [
             'siswa' => $this->siswa->where('siswa_nis', $nis)->first(),
             'orangtua' => $this->orangtua->where('orangtua_siswa', $nis)->findAll(),
-            'ayah' => $this->orangtua->where(['orangtua_siswa'=>$nis,'orangtua_role'=>'ayah'])->first(),
-            'ibu' => $this->orangtua->where(['orangtua_siswa'=>$nis,'orangtua_role'=>'ibu'])->first(),
+            'ayah' => $this->orangtua->where(['orangtua_siswa' => $nis, 'orangtua_role' => 'ayah'])->first(),
+            'ibu' => $this->orangtua->where(['orangtua_siswa' => $nis, 'orangtua_role' => 'ibu'])->first(),
         ];
         return view('siswa/orangtua_siswa', $data);
     }
@@ -258,10 +303,10 @@ class Siswa extends BaseController
     {
         $data = [
             'siswa' => $this->siswa->where('siswa_nis', $nis)->first(),
-            'kesenian' => $this->kegemaran->where(['kegemaran_siswa'=>$nis,'kegemaran_role'=>'kesenian'])->findAll(),
-            'olahraga' => $this->kegemaran->where(['kegemaran_siswa'=>$nis,'kegemaran_role'=>'olahraga'])->findAll(),
-            'organisasi' => $this->kegemaran->where(['kegemaran_siswa'=>$nis,'kegemaran_role'=>'organisasi'])->findAll(),
-            'lain_lain' => $this->kegemaran->where(['kegemaran_siswa'=>$nis,'kegemaran_role'=>'lain-lain'])->findAll(),
+            'kesenian' => $this->kegemaran->where(['kegemaran_siswa' => $nis, 'kegemaran_role' => 'kesenian'])->findAll(),
+            'olahraga' => $this->kegemaran->where(['kegemaran_siswa' => $nis, 'kegemaran_role' => 'olahraga'])->findAll(),
+            'organisasi' => $this->kegemaran->where(['kegemaran_siswa' => $nis, 'kegemaran_role' => 'organisasi'])->findAll(),
+            'lain_lain' => $this->kegemaran->where(['kegemaran_siswa' => $nis, 'kegemaran_role' => 'lain-lain'])->findAll(),
         ];
         return view('siswa/kegemaran_siswa', $data);
     }
@@ -269,7 +314,7 @@ class Siswa extends BaseController
     {
         $data = [
             'siswa' => $this->siswa->where('siswa_nis', $nis)->first(),
-            'beasiswa' => $this->beasiswa->where(['beasiswa_siswa'=>$nis])->findAll(),
+            'beasiswa' => $this->beasiswa->where(['beasiswa_siswa' => $nis])->findAll(),
         ];
         return view('siswa/perkembangan_siswa', $data);
     }
@@ -277,7 +322,7 @@ class Siswa extends BaseController
     {
         $data = [
             'siswa' => $this->siswa->where('siswa_nis', $nis)->first(),
-            'tracker' => $this->tracker->where(['tracker_siswa'=>$nis])->findAll(),
+            'tracker' => $this->tracker->where(['tracker_siswa' => $nis])->findAll(),
         ];
         return view('siswa/tracker_siswa', $data);
     }
@@ -294,12 +339,12 @@ class Siswa extends BaseController
             'siswa' => $this->siswa->where('siswa_nis', $nis)->first(),
             'penyakit' => $this->penyakit->where('penyakit_siswa', $nis)->findAll(),
             'orangtua' => $this->orangtua->where('orangtua_siswa', $nis)->findAll(),
-            'kesenian' => $this->kegemaran->where(['kegemaran_siswa'=>$nis,'kegemaran_role'=>'kesenian'])->findAll(),
-            'olahraga' => $this->kegemaran->where(['kegemaran_siswa'=>$nis,'kegemaran_role'=>'olahraga'])->findAll(),
-            'organisasi' => $this->kegemaran->where(['kegemaran_siswa'=>$nis,'kegemaran_role'=>'organisasi'])->findAll(),
-            'lain_lain' => $this->kegemaran->where(['kegemaran_siswa'=>$nis,'kegemaran_role'=>'lain-lain'])->findAll(),
-            'beasiswa' => $this->beasiswa->where(['beasiswa_siswa'=>$nis])->findAll(),
-            'tracker' => $this->tracker->where(['tracker_siswa'=>$nis])->findAll(),
+            'kesenian' => $this->kegemaran->where(['kegemaran_siswa' => $nis, 'kegemaran_role' => 'kesenian'])->findAll(),
+            'olahraga' => $this->kegemaran->where(['kegemaran_siswa' => $nis, 'kegemaran_role' => 'olahraga'])->findAll(),
+            'organisasi' => $this->kegemaran->where(['kegemaran_siswa' => $nis, 'kegemaran_role' => 'organisasi'])->findAll(),
+            'lain_lain' => $this->kegemaran->where(['kegemaran_siswa' => $nis, 'kegemaran_role' => 'lain-lain'])->findAll(),
+            'beasiswa' => $this->beasiswa->where(['beasiswa_siswa' => $nis])->findAll(),
+            'tracker' => $this->tracker->where(['tracker_siswa' => $nis])->findAll(),
 
         ];
         return $data['siswa'] == null ? redirect()->to('/siswa/') : view('siswa/detail_siswa', $data);

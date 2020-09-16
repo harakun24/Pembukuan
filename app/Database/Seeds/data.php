@@ -12,7 +12,7 @@ class SiswaPribadi extends \CodeIgniter\Database\Seeder
             $dt = $faker->dateTimeBetween($startDate = '-17 years', $endDate = '-10 years');
             $date = $dt->format("Y-m-d");
             $data = [
-                'siswa_nis' => $faker->numberBetween($min = 1000, $max = 4000),
+                'siswa_nis' => $faker->numberBetween($min = 1000, $max = 9000) ,
                 'siswa_nama'    => $faker->name,
                 'siswa_nick' => $faker->lastname,
                 'siswa_jk' => $faker->randomElement($array = array('laki-laki', 'perempuan')),

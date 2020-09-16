@@ -2,32 +2,38 @@
 
 use CodeIgniter\Database\Migration;
 
-class Penyakit extends Migration
+class Tracker extends Migration
 {
 	public function up()
 	{
 		$this->forge->addField([
-			'id'	 				=> [
+			'tracker_id'			=> [
 				'type' 				=> 'int',
 				'constraint' 		=> 11,
 				'auto_increment' 	=> true
 			],
-			'penyakit_siswa'		=> [
-				'type' 				=> 'int'
+			'tracker_tanggal'		=> [
+				'type' 				=> 'date'
 			],
-			'penyakit_nama'			=> [
+			'tracker_nama'			=> [
 				'type' 				=> 'varchar',
 				'constraint' 		=> 255
-			]
+			],
+			'tracker_gaji'			=> [
+				'type' 				=> 'float'
+			],
+			'tracker_siswa'			=> [
+				'type' 				=> 'int'
+			],
 		]);
-		$this->forge->addKey('id', true);
-		$this->forge->createTable('penyakit');
+		$this->forge->addKey('tracker_id', true);
+		$this->forge->createTable('tracker');
 	}
 
 	//--------------------------------------------------------------------
 
 	public function down()
 	{
-		$this->forge->dropTable('penyakit');
+		$this->forge->dropTable('tracker');
 	}
 }
