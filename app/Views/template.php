@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
+    <title>Pembukuan</title>
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css?v=2">
     <link rel="stylesheet" href="/assets/fa/css/all.css">
 
     <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/sweetalert2-all.js"></script>
+
     <style>
         body {
             width: 100%;

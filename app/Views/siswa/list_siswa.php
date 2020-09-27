@@ -1,11 +1,15 @@
 <?= $this->extend('template') ?>
 <?= $this->section('content') ?>
+<script src="/assets/js/xslx.core.js"></script>
+<script src="/assets/js/alasql.js"></script>
+<script src="assets/js/download.io.js"></script>
 <div class="row d-flex justify-content-center position-relative">
     <div class="col-12 mt-0 ">
-        <nav aria-label="breadcrumb">
+        <nav aria-label="breadcrumb d-flex">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?= route_to('siswa_list'); ?>">Pembukuan</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Siswa</li>
+                <li class="breadcrumb-item"></li>
             </ol>
         </nav>
     </div>
@@ -16,7 +20,8 @@
                     <div class="col-md-8 col-12 d-flex align-items-end">
 
                         <h1>Tabel siswa</h1>
-                        <a href="<?= route_to('siswa_add'); ?>" class="btn btn-primary my-2 mx-3 btn-sm"><i class="fa fa-plus"></i><span class="d-none d-sm-inline"> Tambah</span> </a>
+                        <a href="<?= route_to('siswa_add'); ?>" class="btn btn-primary my-2 mr-1 ml-3 btn-sm"><i class="fa fa-plus"></i><span class="d-none d-sm-inline"> Tambah</span> </a>
+                        <button style="cursor:pointer;" onclick="saveFile()" class="btn btn-outline-success my-2 mx-1 btn-sm">unduh &nbsp;<i class="fa fa-cloud-download-alt"></i></button>
                     </div>
                     <div class="col-md-4 col-12 p-2">
 
@@ -128,18 +133,18 @@
                 let url = window.location.href;
                 url = url.split("=")
                 if (url.length == 1) {
-                    url[0] += "?page_table="+value;
+                    url[0] += "?page_table=" + value;
                 }
                 if (url.length == 2) {
                     url[0] += '=';
-                    url[2] = "&page_table="+value;
+                    url[2] = "&page_table=" + value;
                     result = "";
                     for (i = 0; i < url.length; i++) {
 
-                        result += url[i] ;
+                        result += url[i];
                     }
-                    url[0]=result.substring(0, result.length - 1);
-                    url[0]+=3;
+                    url[0] = result.substring(0, result.length - 1);
+                    url[0] += 3;
 
                 } else if (url.length == 3) {
                     result = "";

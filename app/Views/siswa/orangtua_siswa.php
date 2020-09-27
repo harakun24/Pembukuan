@@ -173,7 +173,6 @@
         fetch('/orangtua/' + id)
             .then(res => res.json())
             .then(res => {
-                console.log(res);
                 let view = `
         <form class="col-12" action="/orangtua/perbarui/` + id + `" method="post">
             <?php csrf_field(); ?>
@@ -251,7 +250,6 @@
             </div>
         </form>
         `;
-                console.log(view);
                 Swal.fire({
                     title: 'Tambah data',
                     showConfirmButton: false,

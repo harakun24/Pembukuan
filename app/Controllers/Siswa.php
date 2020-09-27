@@ -87,6 +87,25 @@ class Siswa extends BaseController
             foreach ($lain_lain as $t) {
                 $data['siswa'][$i]['lain_lain'] .= $t['kegemaran_nama'].', ';
             }
+            $data['siswa'][$i]['beasiswa']=$this->beasiswa->where('beasiswa_siswa',$data['siswa'][$i]['siswa_nis'])->findAll();
+            $data['siswa'][$i]['tracker']=$this->tracker->where('tracker_siswa',$data['siswa'][$i]['siswa_nis'])->findAll();
+            $len=count($data['siswa'][$i]['beasiswa']);
+            for($ii = 0; $ii < $len; $ii++){
+                $r['nama']=$data['siswa'][$i]['siswa_nama'];
+                $r['tahun']=$data['siswa'][$i]['beasiswa'][$ii]['beasiswa_tahun'];
+                $r['kelas']=$data['siswa'][$i]['beasiswa'][$ii]['beasiswa_kelas'];
+                $r['dari']=$data['siswa'][$i]['beasiswa'][$ii]['beasiswa_dari'];
+                $data['siswa'][$i]['beasiswa'][$ii]=$r;
+            }
+            $len=count($data['siswa'][$i]['tracker']);
+            $r=[];
+            for($ii = 0; $ii < $len; $ii++){
+                $r['nama']=$data['siswa'][$i]['siswa_nama'];
+                $r['tanggal']=$data['siswa'][$i]['tracker'][$ii]['tracker_tanggal'];
+                $r['perusahaan']=$data['siswa'][$i]['tracker'][$ii]['tracker_nama'];
+                $r['penghasilan']=$data['siswa'][$i]['tracker'][$ii]['tracker_gaji'];
+                $data['siswa'][$i]['tracker'][$ii]=$r;
+            }
         }
         for ($i = 0; $i < $length; $i++) {
             $data['siswa'][$i]['wali'] ="";

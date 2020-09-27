@@ -18,13 +18,12 @@
                 <li class="breadcrumb-item"><a href="<?= route_to('siswa_list'); ?>">Pembukuan</a></li>
                 <li class="breadcrumb-item"><a href="<?= route_to('siswa_list'); ?>">Siswa</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><?= $siswa['siswa_nama']; ?></li>
-                <li class="breadcrumb-item"><button class="btn btn-sm btn-outline-success">unduh &nbsp;<i class="fa fa-cloud-download-alt"></i></button></li>
             </ol>
 
         </nav>
     </div>
     <div class="col-12 d-flex align-items-start justify-content-center flex-wrap">
-        <div class="col-lg-6 col-sm-12 px-3 d-flex justify-content-center flex-wrap">
+        <div class="col-lg-10 col-sm-12 px-3 d-flex justify-content-center flex-wrap">
             <div class="card col-12 mb-3">
                 <div class="card-body position-relative">
                     <a href="<?= route_to('siswa_edit', $siswa['siswa_nis']); ?>" class="position-absolute btn btn-sm btn-outline-success" style="right:4%;top:15px;cursor:pointer;">
@@ -79,6 +78,72 @@
                         <tr>
                             <th>Bahsa sehari-hari</th>
                             <td><?= $siswa['siswa_bahasa']; ?></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="card col-12 mb-3">
+                <div class="card-body">
+                    <a href="<?= route_to('siswa_alamat', $siswa['siswa_nis']); ?>" class="position-absolute btn btn-sm btn-outline-success" style="right:4%;top:15px;cursor:pointer;">
+                        atur <i class="fa fa-pen"></i>
+                    </a>
+                    <h4>B. Tempat Tinggal</h4>
+                    <table class="table table-bordered table-hover mt-4">
+                        <tr>
+                            <th>Alamat</th>
+                            <td><?= $siswa['siswa_alamat']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Alamat wali</th>
+                            <td><?= $siswa['siswa_alamat_wali']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Telepon</th>
+                            <td><?= $siswa['siswa_telepon']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Status tinggal</th>
+                            <td><?= $siswa['siswa_tinggal']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Jarak</th>
+                            <td><?= $siswa['siswa_jarak'] . ' Km'; ?></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="card col-12 mb-3">
+                <div class="card-body">
+                    <a href="<?= route_to('siswa_penyakit', $siswa['siswa_nis']); ?>" class="position-absolute btn btn-sm btn-outline-success" style="right:4%;top:15px;cursor:pointer;">
+                        atur <i class="fa fa-pen"></i>
+                    </a>
+                    <h4>C. Data Kesehatan</h4>
+                    <table class="table table-bordered table-hover mt-4">
+                        <tr>
+                            <th>Golongan darah</th>
+                            <td><?= $siswa['siswa_golongan_darah']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Penyakit</th>
+                            <td>
+                                <?php if ($penyakit != null) : ?>
+                                    <?php foreach ($penyakit as $p) : ?>
+                                        <?= $p['penyakit_nama'] . ', '; ?>
+                                    <?php endforeach ?>
+                                <?php endif ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Kelainan jasmani</th>
+                            <td><?= $siswa['siswa_kelainan']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Tinggi badan</th>
+                            <td><?= $siswa['siswa_tinggi'] . ' cm'; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Berat badan</th>
+                            <td><?= $siswa['siswa_berat'] . ' Kg'; ?></td>
                         </tr>
                     </table>
                 </div>
@@ -193,75 +258,6 @@
                             </li>
                         </ol>
                     <?php endforeach ?>
-                </div>
-            </div>
-
-        </div>
-        <div class="col-lg-6 px-3 col-sm-12 d-flex justify-content-center flex-wrap">
-            <div class="card col-12 mb-3">
-                <div class="card-body">
-                    <a href="<?= route_to('siswa_alamat', $siswa['siswa_nis']); ?>" class="position-absolute btn btn-sm btn-outline-success" style="right:4%;top:15px;cursor:pointer;">
-                        atur <i class="fa fa-pen"></i>
-                    </a>
-                    <h4>B. Tempat Tinggal</h4>
-                    <table class="table table-bordered table-hover mt-4">
-                        <tr>
-                            <th>Alamat</th>
-                            <td><?= $siswa['siswa_alamat']; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Alamat wali</th>
-                            <td><?= $siswa['siswa_alamat_wali']; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Telepon</th>
-                            <td><?= $siswa['siswa_telepon']; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Status tinggal</th>
-                            <td><?= $siswa['siswa_tinggal']; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Jarak</th>
-                            <td><?= $siswa['siswa_jarak'] . ' Km'; ?></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="card col-12 mb-3">
-                <div class="card-body">
-                    <a href="<?= route_to('siswa_penyakit', $siswa['siswa_nis']); ?>" class="position-absolute btn btn-sm btn-outline-success" style="right:4%;top:15px;cursor:pointer;">
-                        atur <i class="fa fa-pen"></i>
-                    </a>
-                    <h4>C. Data Kesehatan</h4>
-                    <table class="table table-bordered table-hover mt-4">
-                        <tr>
-                            <th>Golongan darah</th>
-                            <td><?= $siswa['siswa_golongan_darah']; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Penyakit</th>
-                            <td>
-                                <?php if ($penyakit != null) : ?>
-                                    <?php foreach ($penyakit as $p) : ?>
-                                        <?= $p['penyakit_nama'] . ', '; ?>
-                                    <?php endforeach ?>
-                                <?php endif ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Kelainan jasmani</th>
-                            <td><?= $siswa['siswa_kelainan']; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Tinggi badan</th>
-                            <td><?= $siswa['siswa_tinggi'] . ' cm'; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Berat badan</th>
-                            <td><?= $siswa['siswa_berat'] . ' Kg'; ?></td>
-                        </tr>
-                    </table>
                 </div>
             </div>
             <div class="card col-12 mb-3">
@@ -410,6 +406,7 @@
                     </ul>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

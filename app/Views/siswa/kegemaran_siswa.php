@@ -218,7 +218,6 @@
         fetch('/kegemaran/' + id)
             .then(res => res.json())
             .then(res => {
-                console.log(res);
                 let view = `
                 <form class="col-12" action="<?= route_to('kegemaran_update', $siswa['siswa_nis']); ?>" method="post">
             <?php csrf_field(); ?>

@@ -2,17 +2,17 @@
 
 namespace App\Database\Seeds;
 
-class SiswaPribadi extends \CodeIgniter\Database\Seeder
+class Data extends \CodeIgniter\Database\Seeder
 {
     public function run()
     {
         $faker = \Faker\Factory::create('id_ID');
-        for ($i = 0; $i < 200; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             # code...
             $dt = $faker->dateTimeBetween($startDate = '-17 years', $endDate = '-10 years');
             $date = $dt->format("Y-m-d");
             $data = [
-                'siswa_nis' => $faker->numberBetween($min = 1000, $max = 9000) ,
+                'siswa_nis' => $faker->unixTime($max='now') ,
                 'siswa_nama'    => $faker->name,
                 'siswa_nick' => $faker->lastname,
                 'siswa_jk' => $faker->randomElement($array = array('laki-laki', 'perempuan')),
@@ -34,6 +34,8 @@ class SiswaPribadi extends \CodeIgniter\Database\Seeder
                 'siswa_golongan_darah' => $faker->randomElement($array = array('O', 'A', 'B', 'AB')),
                 'siswa_tinggi' => $faker->numberBetween($min = 155, $max = 182),
                 'siswa_berat' => $faker->numberBetween($min = 48, $max = 80),
+                'siswa_kelas' => $faker->randomElement($array = array('X', 'XI', 'XII')),
+                'siswa_prodi' => $faker->randomElement($array = array('IPA','IPS','Bahasa')),
             ];
 
 
