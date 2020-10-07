@@ -74,27 +74,27 @@
         </div>
     </div> -->
     <script>
-        function klik(arg, t) {
-            var dd = document.getElementsByClassName(arg);
-            Array.prototype.forEach.call(dd, el => {
-                el.checked = t.checked;
-            })
-        }
+    function klik(arg, t) {
+        var dd = document.getElementsByClassName(arg);
+        Array.prototype.forEach.call(dd, el => {
+            el.checked = t.checked;
+        })
+    }
 
-        function subklik(prt, t) {
-            var dd = document.getElementsByClassName(prt);
-            let p = document.getElementById(prt);
-            let status = false;
-            Array.prototype.forEach.call(dd, el => {
-                if (el.checked)
-                    status = true;
-            })
-            p.checked = status;
+    function subklik(prt, t) {
+        var dd = document.getElementsByClassName(prt);
+        let p = document.getElementById(prt);
+        let status = false;
+        Array.prototype.forEach.call(dd, el => {
+            if (el.checked)
+                status = true;
+        })
+        p.checked = status;
 
 
-        }
-        window.saveFile = function saveFile() {
-            ko = `
+    }
+    window.saveFile = function saveFile() {
+        ko = `
             <div class="col-12 d-flex flex-wrap align-items-start">
         <div class="row">
             <div class="col-12 d-flex justify-content-start align-items-center">
@@ -303,271 +303,295 @@
     </div>
             `;
 
-            Swal.fire({
-                title: 'Data Laporan',
-                html: ko,
-            }).then(ej => {
-                let pribadi = document.getElementById('pribadi');
-                let pendidikan = document.getElementById('pendidikan');
-                let kesehatan = document.getElementById('kesehatan');
-                let tt = document.getElementById('tt');
-                let kegemaran = document.getElementById('kegemaran');
-                let perkembangan = document.getElementById('perkembangan');
-                let beasiswa = document.getElementById('beasiswa');
-                let bekerja = document.getElementById('bekerja');
-                //child
-                let pribadi_nama = document.getElementById('pribadi_nama');
-                let pribadi_nis = document.getElementById('pribadi_nis');
-                let pribadi_nick = document.getElementById('pribadi_nick');
-                let pribadi_jk = document.getElementById('pribadi_jk');
-                let pribadi_ttl = document.getElementById('pribadi_ttl');
-                let pribadi_agama = document.getElementById('pribadi_agama');
-                let pribadi_ot = document.getElementById('pribadi_ot');
-                let pribadi_k = document.getElementById('pribadi_k');
-                let pribadi_s = document.getElementById('pribadi_s');
-                let pribadi_bahasa = document.getElementById('pribadi_bahasa');
+        Swal.fire({
+            title: 'Data Laporan',
+            html: ko,
+            showCancelButton: true,
+            cancelButtonText: 'Batal',
+            cancelButtonColor: '#d33',
+        }).then(ej => {
+            let pribadi = document.getElementById('pribadi');
+            let pendidikan = document.getElementById('pendidikan');
+            let kesehatan = document.getElementById('kesehatan');
+            let tt = document.getElementById('tt');
+            let kegemaran = document.getElementById('kegemaran');
+            let perkembangan = document.getElementById('perkembangan');
+            let beasiswa = document.getElementById('beasiswa');
+            let bekerja = document.getElementById('bekerja');
+            //child
+            let pribadi_nama = document.getElementById('pribadi_nama');
+            let pribadi_nis = document.getElementById('pribadi_nis');
+            let pribadi_nick = document.getElementById('pribadi_nick');
+            let pribadi_jk = document.getElementById('pribadi_jk');
+            let pribadi_ttl = document.getElementById('pribadi_ttl');
+            let pribadi_agama = document.getElementById('pribadi_agama');
+            let pribadi_ot = document.getElementById('pribadi_ot');
+            let pribadi_k = document.getElementById('pribadi_k');
+            let pribadi_s = document.getElementById('pribadi_s');
+            let pribadi_bahasa = document.getElementById('pribadi_bahasa');
 
-                let pendidikan_ld = document.getElementById('pendidikan_ld');
-                let pendidikan_tsttb = document.getElementById('pendidikan_tsttb');
-                let pendidikan_lb = document.getElementById('pendidikan_lb');
-                let pendidikan_pd = document.getElementById('pendidikan_pd');
-                let pendidikan_alasan = document.getElementById('pendidikan_alasan');
-                let pendidikan_kelas = document.getElementById('pendidikan_kelas');
-                let pendidikan_prodi = document.getElementById('pendidikan_prodi');
-                let pendidikan_diterima = document.getElementById('pendidikan_diterima');
+            let pendidikan_ld = document.getElementById('pendidikan_ld');
+            let pendidikan_tsttb = document.getElementById('pendidikan_tsttb');
+            let pendidikan_lb = document.getElementById('pendidikan_lb');
+            let pendidikan_pd = document.getElementById('pendidikan_pd');
+            let pendidikan_alasan = document.getElementById('pendidikan_alasan');
+            let pendidikan_kelas = document.getElementById('pendidikan_kelas');
+            let pendidikan_prodi = document.getElementById('pendidikan_prodi');
+            let pendidikan_diterima = document.getElementById('pendidikan_diterima');
 
-                let kesehatan_gd = document.getElementById('kesehatan_gd');
-                let kesehatan_penyakit = document.getElementById('kesehatan_penyakit');
-                let kesehatan_kj = document.getElementById('kesehatan_kj');
-                let kesehatan_tinggi = document.getElementById('kesehatan_tinggi');
-                let kesehatan_berat = document.getElementById('kesehatan_berat');
+            let kesehatan_gd = document.getElementById('kesehatan_gd');
+            let kesehatan_penyakit = document.getElementById('kesehatan_penyakit');
+            let kesehatan_kj = document.getElementById('kesehatan_kj');
+            let kesehatan_tinggi = document.getElementById('kesehatan_tinggi');
+            let kesehatan_berat = document.getElementById('kesehatan_berat');
 
-                let tt_alamat = document.getElementById('tt_alamat');
-                let tt_wali = document.getElementById('tt_wali');
-                let tt_telepon = document.getElementById('tt_telepon');
-                let tt_st = document.getElementById('tt_st');
-                let tt_jarak = document.getElementById('tt_jarak');
+            let tt_alamat = document.getElementById('tt_alamat');
+            let tt_wali = document.getElementById('tt_wali');
+            let tt_telepon = document.getElementById('tt_telepon');
+            let tt_st = document.getElementById('tt_st');
+            let tt_jarak = document.getElementById('tt_jarak');
 
-                let kegemaran_kesenian = document.getElementById('kegemaran_kesenian');
-                let kegemaran_or = document.getElementById('kegemaran_or');
-                let kegemaran_organisasi = document.getElementById('kegemaran_organisasi');
-                let kegemaran_dll = document.getElementById('kegemaran_dll');
+            let kegemaran_kesenian = document.getElementById('kegemaran_kesenian');
+            let kegemaran_or = document.getElementById('kegemaran_or');
+            let kegemaran_organisasi = document.getElementById('kegemaran_organisasi');
+            let kegemaran_dll = document.getElementById('kegemaran_dll');
 
-                let perkembangan_tm = document.getElementById('perkembangan_tm');
-                let perkembangan_am = document.getElementById('perkembangan_am');
-                let perkembangan_sttb = document.getElementById('perkembangan_sttb');
-                let perkembangan_tt = document.getElementById('perkembangan_tt');
-                let perkembangan_md = document.getElementById('perkembangan_md');
+            let perkembangan_tm = document.getElementById('perkembangan_tm');
+            let perkembangan_am = document.getElementById('perkembangan_am');
+            let perkembangan_sttb = document.getElementById('perkembangan_sttb');
+            let perkembangan_tt = document.getElementById('perkembangan_tt');
+            let perkembangan_md = document.getElementById('perkembangan_md');
 
-                //eksport
-                fetch("/siswa/tes")
-                    .then(res => res.json())
-                    .then(res => {
-                        data = [];
-                        let bea = [];
-                        let gg = true;
-                        for (i = 0; i < 8; i++)
-                            data.push([])
-                        for (const [key, value] of Object.entries(res.status)) {
-                            for (const [k, v] of Object.entries(value)) {
-                                if ((v == "" || v == null) && k != 'tracker')
-                                    res.status[key][k] = "-";
-                            }
-                            let temp = new Object();
-                            if (pribadi_nama.checked)
-                                temp.nama = value.siswa_nama;
-                            if (pribadi_nis.checked)
-                                temp.nis = value.siswa_nis;
-                            if (pribadi_nick.checked)
-                                temp.panggilan = value.siswa_nick;
-                            if (pribadi_jk.checked)
-                                temp['jenis kelamin'] = value.siswa_jk;
-                            if (pribadi_ttl.checked)
-                                temp.ttl = value.siswa_tempat_lahir + "," + value.siswa_tanggal_lahir;
-                            if (pribadi_agama.checked)
-                                temp.agama = value.siswa_agama;
-                            if (pribadi_ot.checked)
-                                temp['orang tua'] = value.wali;
-                            if (pribadi_k.checked)
-                                temp.kewarganegaraan = value.siswa_kewarganegaraan;
-                            if (pribadi_s.checked) {
-
-                                temp['anak ke'] = value.siswa_order;
-                                temp['saudara kandung'] = value.siswa_kandung;
-                                temp['saudara tiri'] = value.siswa_tiri;
-                                temp['saudara angkat'] = value.siswa_angkat;
-                            }
-                            if (pribadi_bahasa.checked)
-                                temp['bahasa sehari-hari'] = value.siswa_bahasa;
-                            data[0].push(temp);
-
-                            temp = new Object();
+            //eksport
+            fetch("/siswa/tes")
+                .then(res => res.json())
+                .then(res => {
+                    data = [];
+                    let bea = [];
+                    let gg = true;
+                    for (i = 0; i < 8; i++)
+                        data.push([])
+                    for (const [key, value] of Object.entries(res.status)) {
+                        for (const [k, v] of Object.entries(value)) {
+                            if ((v == "" || v == null) && k != 'tracker')
+                                res.status[key][k] = "-";
+                        }
+                        let temp = new Object();
+                        if (pribadi_nama.checked)
                             temp.nama = value.siswa_nama;
-                            if (tt_alamat.checked)
-                                temp['alamat'] = value.siswa_alamat;
-                            if (tt_wali.checked)
-                                temp['alamat wali'] = value.siswa_alamat_wali;
-                            if (tt_telepon.checked)
-                                temp['nomor telepon'] = value.siswa_telepon;
-                            if (tt_st.checked)
-                                temp['status tinggal'] = value.siswa_tinggal;
-                            if (tt_jarak.checked)
-                                temp['jarak'] = value.siswa_jarak + " Km";
-                            data[1].push(temp);
+                        if (pribadi_nis.checked)
+                            temp.nis = value.siswa_nis;
+                        if (pribadi_nick.checked)
+                            temp.panggilan = value.siswa_nick;
+                        if (pribadi_jk.checked)
+                            temp['jenis kelamin'] = value.siswa_jk;
+                        if (pribadi_ttl.checked)
+                            temp.ttl = value.siswa_tempat_lahir + "," + value.siswa_tanggal_lahir;
+                        if (pribadi_agama.checked)
+                            temp.agama = value.siswa_agama;
+                        if (pribadi_ot.checked)
+                            temp['orang tua'] = value.wali;
+                        if (pribadi_k.checked)
+                            temp.kewarganegaraan = value.siswa_kewarganegaraan;
+                        if (pribadi_s.checked) {
 
-                            temp = new Object();
-                            temp.nama = value.siswa_nama;
-                            if (kesehatan_gd.checked)
-                                temp["golongan darah"] = value.siswa_golongan_darah;
-                            if (kesehatan_penyakit.checked)
-                                temp.penyakit = value.penyakit;
-                            if (kesehatan_kj.checked)
-                                temp.kelainan = value.siswa_kelainan;
-                            if (kesehatan_tinggi.checked)
-                                temp.tinggi = value.siswa_tinggi + " cm";
-                            if (kesehatan_berat.checked)
-                                temp.berat = value.siswa_berat + " Kg";
-                            data[2].push(temp);
+                            temp['anak ke'] = value.siswa_order;
+                            temp['saudara kandung'] = value.siswa_kandung;
+                            temp['saudara tiri'] = value.siswa_tiri;
+                            temp['saudara angkat'] = value.siswa_angkat;
+                        }
+                        if (pribadi_bahasa.checked)
+                            temp['bahasa sehari-hari'] = value.siswa_bahasa;
+                        data[0].push(temp);
 
+                        temp = new Object();
+                        temp.nama = value.siswa_nama;
+                        if (tt_alamat.checked)
+                            temp['alamat'] = value.siswa_alamat;
+                        if (tt_wali.checked)
+                            temp['alamat wali'] = value.siswa_alamat_wali;
+                        if (tt_telepon.checked)
+                            temp['nomor telepon'] = value.siswa_telepon;
+                        if (tt_st.checked)
+                            temp['status tinggal'] = value.siswa_tinggal;
+                        if (tt_jarak.checked)
+                            temp['jarak'] = value.siswa_jarak + " Km";
+                        data[1].push(temp);
 
-                            temp = new Object();
-                            temp.nama = value.siswa_nama;
-                            if (pendidikan_ld.checked)
-                                temp['lulusan dari'] = value.siswa_dari;
-                            if (pendidikan_tsttb.checked)
-                                temp['tanggal & no STTB'] = value.siswa_sebelum_tanggal + ", " + value.siswa_sebelum_sttb;
-                            if (pendidikan_lb.checked)
-                                temp['lama belajar'] = value.siswa_sebelum_lama;
-                            if (pendidikan_pd.checked)
-                                temp['pindahan dari'] = value.siswa_pindah_dari;
-                            if (pendidikan_alasan.checked)
-                                temp['alasan pindah'] = value.siswa_pindah_alasan;
-                            if (pendidikan_kelas.checked)
-                                temp['kelas diterima'] = value.siswa_kelas;
-                            if (pendidikan_prodi.checked)
-                                temp['program studi'] = value.siswa_prodi;
-                            if (pendidikan_diterima.checked)
-                                temp['tanggal'] = value.siswa_tanggal_diterima;
-                            data[3].push(temp);
-
-                            temp = new Object();
-                            temp.nama = value.siswa_nama;
-                            if (kegemaran_kesenian.checked)
-                                temp.kesenian = value.siswa_kesenian;
-                            if (kegemaran_or.checked)
-                                temp.olahraga = value.siswa_olahraga;
-                            if (kegemaran_organisasi.checked)
-                                temp.organisasi = value.siswa_organisasi;
-                            if (kegemaran_dll.checked)
-                                temp.lainnya = value.siswa_lain_lain;
-                            data[4].push(temp);
+                        temp = new Object();
+                        temp.nama = value.siswa_nama;
+                        if (kesehatan_gd.checked)
+                            temp["golongan darah"] = value.siswa_golongan_darah;
+                        if (kesehatan_penyakit.checked)
+                            temp.penyakit = value.penyakit;
+                        if (kesehatan_kj.checked)
+                            temp.kelainan = value.siswa_kelainan;
+                        if (kesehatan_tinggi.checked)
+                            temp.tinggi = value.siswa_tinggi + " cm";
+                        if (kesehatan_berat.checked)
+                            temp.berat = value.siswa_berat + " Kg";
+                        data[2].push(temp);
 
 
-                            if (value.beasiswa != "-") {
-                                value.beasiswa.forEach((kk, vv) => {
-                                    data[5].push(kk);
-                                })
-                            } else {
-                                gg = false;
-                            }
-                            temp = new Object();
-                            temp.nama = value.siswa_nama;
-                            if (perkembangan_tm.checked)
-                                temp["tanggal meninggalkan"] = value.siswa_tanggal_meninggalkan;
-                            if (perkembangan_am.checked)
-                                temp["alasan meninggalkan"] = value.siswa_alasan_meninggalkan;
-                            if (perkembangan_sttb.checked)
-                                temp['Nomor STTB'] = value.siswa_tamat_sttb;
-                            if (perkembangan_tt.checked)
-                                temp['Tahun tamat'] = value.siswa_tamat_tahun;
-                            if (perkembangan_md.checked)
-                                temp['melanjutkan ke'] = value.siswa_melanjutkan;
-                            data[6].push(temp);
+                        temp = new Object();
+                        temp.nama = value.siswa_nama;
+                        if (pendidikan_ld.checked)
+                            temp['lulusan dari'] = value.siswa_dari;
+                        if (pendidikan_tsttb.checked)
+                            temp['tanggal & no STTB'] = value.siswa_sebelum_tanggal + ", " + value
+                            .siswa_sebelum_sttb;
+                        if (pendidikan_lb.checked)
+                            temp['lama belajar'] = value.siswa_sebelum_lama;
+                        if (pendidikan_pd.checked)
+                            temp['pindahan dari'] = value.siswa_pindah_dari;
+                        if (pendidikan_alasan.checked)
+                            temp['alasan pindah'] = value.siswa_pindah_alasan;
+                        if (pendidikan_kelas.checked)
+                            temp['kelas diterima'] = value.siswa_kelas;
+                        if (pendidikan_prodi.checked)
+                            temp['program studi'] = value.siswa_prodi;
+                        if (pendidikan_diterima.checked)
+                            temp['tanggal'] = value.siswa_tanggal_diterima;
+                        data[3].push(temp);
 
-                            value.tracker.forEach((kk, vv) => {
-                                data[7].push(kk);
+                        temp = new Object();
+                        temp.nama = value.siswa_nama;
+                        if (kegemaran_kesenian.checked)
+                            temp.kesenian = value.siswa_kesenian;
+                        if (kegemaran_or.checked)
+                            temp.olahraga = value.siswa_olahraga;
+                        if (kegemaran_organisasi.checked)
+                            temp.organisasi = value.siswa_organisasi;
+                        if (kegemaran_dll.checked)
+                            temp.lainnya = value.siswa_lain_lain;
+                        data[4].push(temp);
+
+
+                        if (value.beasiswa != "-") {
+                            value.beasiswa.forEach((kk, vv) => {
+                                data[5].push(kk);
+                            })
+                        } else {
+                            gg = false;
+                        }
+                        temp = new Object();
+                        temp.nama = value.siswa_nama;
+                        if (perkembangan_tm.checked)
+                            temp["tanggal meninggalkan"] = value.siswa_tanggal_meninggalkan;
+                        if (perkembangan_am.checked)
+                            temp["alasan meninggalkan"] = value.siswa_alasan_meninggalkan;
+                        if (perkembangan_sttb.checked)
+                            temp['Nomor STTB'] = value.siswa_tamat_sttb;
+                        if (perkembangan_tt.checked)
+                            temp['Tahun tamat'] = value.siswa_tamat_tahun;
+                        if (perkembangan_md.checked)
+                            temp['melanjutkan ke'] = value.siswa_melanjutkan;
+                        data[6].push(temp);
+
+                        value.tracker.forEach((kk, vv) => {
+                            data[7].push(kk);
+                        })
+                    }
+
+
+                    let tie = [];
+                    let out = [];
+                    let stat = false;
+                    if (pribadi.checked) {
+                        tie.push({
+                            sheetid: 'pribadi',
+                            header: true,
+                        });
+                        out.push(data[0]);
+                        stat = true;
+                    }
+                    if (tt.checked) {
+                        tie.push({
+                            sheetid: 'tempat tinggal',
+                            header: true,
+                        });
+                        out.push(data[1]);
+                        stat = true;
+
+                    }
+                    if (kesehatan.checked) {
+                        tie.push({
+                            sheetid: 'kesehatan',
+                            header: true,
+                        });
+                        out.push(data[2]);
+                        stat = true;
+
+                    }
+                    if (pendidikan.checked) {
+                        tie.push({
+                            sheetid: 'pendidikan',
+                            header: true,
+                        });
+                        out.push(data[3]);
+                        stat = true;
+
+                    }
+                    if (kegemaran.checked) {
+                        tie.push({
+                            sheetid: 'kegemaran',
+                            header: true,
+                        });
+                        out.push(data[4]);
+                        stat = true;
+
+                    }
+                    if (beasiswa.checked && gg) {
+                        tie.push({
+                            sheetid: 'beasiswa',
+                            header: true,
+                        });
+                        out.push(data[5]);
+                        stat = true;
+
+                    }
+                    if (perkembangan.checked) {
+                        tie.push({
+                            sheetid: 'perkembangan',
+                            header: true,
+                        });
+                        out.push(data[6]);
+                        stat = true;
+
+                    }
+                    if (bekerja.checked) {
+                        if (data[7][0] != null) {
+                            tie.push({
+                                sheetid: 'karir alumni',
+                                header: true,
+                            });
+                            out.push(data[7]);
+                            stat = true;
+                        }
+                    }
+                    if (ej.isConfirmed) {
+
+                        if (data[7][0] == null || !gg) {
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                }
+                            })
+
+                            Toast.fire({
+                                icon: 'error',
+                                title: 'Data kosong atau tidak valid!'
                             })
                         }
+                        if (stat) {
 
-
-                        let tie = [];
-                        let out = [];
-                        let stat = false;
-                        if (pribadi.checked) {
-                            tie.push({
-                                sheetid: 'pribadi',
-                                header: true,
-                            });
-                            out.push(data[0]);
-                            stat = true;
-                        }
-                        if (tt.checked) {
-                            tie.push({
-                                sheetid: 'tempat tinggal',
-                                header: true,
-                            });
-                            out.push(data[1]);
-                            stat = true;
-
-                        }
-                        if (kesehatan.checked) {
-                            tie.push({
-                                sheetid: 'kesehatan',
-                                header: true,
-                            });
-                            out.push(data[2]);
-                            stat = true;
-
-                        }
-                        if (pendidikan.checked) {
-                            tie.push({
-                                sheetid: 'pendidikan',
-                                header: true,
-                            });
-                            out.push(data[3]);
-                            stat = true;
-
-                        }
-                        if (kegemaran.checked) {
-                            tie.push({
-                                sheetid: 'kegemaran',
-                                header: true,
-                            });
-                            out.push(data[4]);
-                            stat = true;
-
-                        }
-                        if (beasiswa.checked && gg) {
-                            tie.push({
-                                sheetid: 'beasiswa',
-                                header: true,
-                            });
-                            out.push(data[5]);
-                            stat = true;
-
-                        }
-                        if (perkembangan.checked) {
-                            tie.push({
-                                sheetid: 'perkembangan',
-                                header: true,
-                            });
-                            out.push(data[6]);
-                            stat = true;
-
-                        }
-                        if (bekerja.checked) {
-                            if (data[7][0] != null) {
-                                tie.push({
-                                    sheetid: 'karir alumni',
-                                    header: true,
-                                });
-                                out.push(data[7]);
-                                stat = true;
-                            }
-                        }
-                        if (ej.isConfirmed) {
-
-                            if (data[7][0] == null || !gg) {
+                            try {
                                 const Toast = Swal.mixin({
                                     toast: true,
                                     position: 'top-end',
@@ -576,7 +600,31 @@
                                     timerProgressBar: true,
                                     didOpen: (toast) => {
                                         toast.addEventListener('mouseenter', Swal.stopTimer)
-                                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                        toast.addEventListener('mouseleave', Swal
+                                            .resumeTimer)
+                                    }
+                                })
+
+                                Toast.fire({
+                                    icon: 'success',
+                                    title: 'Sedang mengunduh laporan'
+                                })
+                                var res2 = alasql('SELECT * INTO XLSX("siswa.xlsx",?) FROM ?',
+                                    [
+                                        tie, out
+                                    ]);
+
+                            } catch (e) {
+                                const Toast = Swal.mixin({
+                                    toast: true,
+                                    position: 'top-end',
+                                    showConfirmButton: false,
+                                    timer: 3000,
+                                    timerProgressBar: true,
+                                    didOpen: (toast) => {
+                                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                                        toast.addEventListener('mouseleave', Swal
+                                            .resumeTimer)
                                     }
                                 })
 
@@ -585,90 +633,51 @@
                                     title: 'Data kosong atau tidak valid!'
                                 })
                             }
-                            if (stat) {
-
-                                try {
-                                    const Toast = Swal.mixin({
-                                        toast: true,
-                                        position: 'top-end',
-                                        showConfirmButton: false,
-                                        timer: 3000,
-                                        timerProgressBar: true,
-                                        didOpen: (toast) => {
-                                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                        }
-                                    })
-
-                                    Toast.fire({
-                                        icon: 'success',
-                                        title: 'Sedang mengunduh laporan'
-                                    })
-                                    var res2 = alasql('SELECT * INTO XLSX("siswa.xlsx",?) FROM ?',
-                                        [
-                                            tie, out
-                                        ]);
-                                    
-                                } catch (e) {
-                                    const Toast = Swal.mixin({
-                                        toast: true,
-                                        position: 'top-end',
-                                        showConfirmButton: false,
-                                        timer: 3000,
-                                        timerProgressBar: true,
-                                        didOpen: (toast) => {
-                                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                        }
-                                    })
-
-                                    Toast.fire({
-                                        icon: 'error',
-                                        title: 'Data kosong atau tidak valid!'
-                                    })
-                                }
-                            }
                         }
-                    });
-            });
+                    }
+                });
+        });
 
-            let g = document.getElementById('all');
-            g.onclick = () => {
-                let pribadi = document.getElementById('pribadi');
-                let kesehatan = document.getElementById('kesehatan');
-                let kegemaran = document.getElementById('kegemaran');
-                let perkembangan = document.getElementById('perkembangan');
-                let tt = document.getElementById('tt');
-                let pendidikan = document.getElementById('pendidikan');
-                let beasiswa = document.getElementById('beasiswa');
-                let bekerja = document.getElementById('bekerja');
-                if (g.checked) {
+        let g = document.getElementById('all');
+        g.onclick = () => {
+            let pribadi = document.getElementById('pribadi');
+            let kesehatan = document.getElementById('kesehatan');
+            let kegemaran = document.getElementById('kegemaran');
+            let perkembangan = document.getElementById('perkembangan');
+            let tt = document.getElementById('tt');
+            let pendidikan = document.getElementById('pendidikan');
+            let beasiswa = document.getElementById('beasiswa');
+            let bekerja = document.getElementById('bekerja');
+            // if (g.checked) {
 
-                    if (!pribadi.checked)
-                        pribadi.click();
-                    if (!pendidikan.checked)
-                        pendidikan.click();
-                    if (!kesehatan.checked)
-                        kesehatan.click();
-                    if (!kegemaran.checked)
-                        kegemaran.click();
-                    if (!perkembangan.checked)
-                        perkembangan.click();
-                    if (!tt.checked)
-                        tt.click();
-                    beasiswa.checked = true;
-                    bekerja.checked = true;
-                    let c = document.getElementsByClassName('child-c');
-                    Array.prototype.forEach.call(c, el => {
-                        el.checked = true;
-                    })
-                }
+            if (!pribadi.checked == g.checked)
+                pribadi.click();
+            if (!pendidikan.checked == g.checked)
+                pendidikan.click();
+            if (!kesehatan.checked == g.checked)
+                kesehatan.click();
+            if (!kegemaran.checked == g.checked)
+                kegemaran.click();
+            if (!perkembangan.checked == g.checked)
+                perkembangan.click();
+            if (!tt.checked == g.checked)
+                tt.click();
+            if (!beasiswa.checked == g.checked)
+                beasiswa.click();
+            if (!bekerja.checked == g.checked)
+                bekerja.click();
+            let c = document.getElementsByClassName('child-c');
+            Array.prototype.forEach.call(c, el => {
 
-            }
-
-
+                el.checked = g.checked ? true : false;
+            })
+            // }
 
         }
+
+
+
+    }
     </script>
 </body>
 
